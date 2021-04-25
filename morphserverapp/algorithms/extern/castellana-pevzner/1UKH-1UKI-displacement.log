@@ -1,0 +1,509 @@
+starting...
+Morphing will be performed between two chains with 321 residues each.
+The morphing path will pass through 24 intermediate states.
+distance between the 0-th residues:   1.2766
+distance between the 1-th residues:   1.3691
+distance between the 2-th residues:   1.4111
+distance between the 3-th residues:   1.2979
+distance between the 4-th residues:   1.2092
+distance between the 5-th residues:   1.3123
+distance between the 6-th residues:   1.3035
+distance between the 7-th residues:   1.3005
+distance between the 8-th residues:   1.3864
+distance between the 9-th residues:   1.3952
+distance between the 10-th residues:   1.3299
+distance between the 11-th residues:   1.1547
+distance between the 12-th residues:   1.3286
+distance between the 13-th residues:   1.2188
+distance between the 14-th residues:   6.3488
+distance between the 15-th residues:   6.9698
+distance between the 16-th residues:   9.8337
+distance between the 17-th residues:   6.5424
+distance between the 18-th residues:   8.3037
+distance between the 19-th residues:   9.5603
+distance between the 20-th residues:   9.2571
+distance between the 21-th residues:   8.8329
+distance between the 22-th residues:   7.0595
+distance between the 23-th residues:   8.7585
+distance between the 24-th residues:   8.4384
+distance between the 25-th residues:   8.1402
+distance between the 26-th residues:   6.3035
+distance between the 27-th residues:   8.8002
+distance between the 28-th residues:   9.4025
+distance between the 29-th residues:  10.5788
+distance between the 30-th residues:  11.0060
+distance between the 31-th residues:  10.2119
+distance between the 32-th residues:  10.6893
+distance between the 33-th residues:  10.7571
+distance between the 34-th residues:  10.1643
+distance between the 35-th residues:   9.5862
+distance between the 36-th residues:   6.7754
+distance between the 37-th residues:   5.3857
+distance between the 38-th residues:   7.9711
+distance between the 39-th residues:   8.0658
+distance between the 40-th residues:   8.3264
+distance between the 41-th residues:   9.1023
+distance between the 42-th residues:   9.0905
+distance between the 43-th residues:   9.0747
+distance between the 44-th residues:   9.2818
+distance between the 45-th residues:   9.2723
+distance between the 46-th residues:   9.0021
+distance between the 47-th residues:   8.7153
+distance between the 48-th residues:   5.6347
+distance between the 49-th residues:   9.4510
+distance between the 50-th residues:   6.1732
+distance between the 51-th residues:   7.5994
+distance between the 52-th residues:   7.1033
+distance between the 53-th residues:   8.8592
+distance between the 54-th residues:   6.7609
+distance between the 55-th residues:   6.5468
+distance between the 56-th residues:   7.2975
+distance between the 57-th residues:   6.1645
+distance between the 58-th residues:   5.9049
+distance between the 59-th residues:   6.0469
+distance between the 60-th residues:   6.1266
+distance between the 61-th residues:   6.4072
+distance between the 62-th residues:   6.2907
+distance between the 63-th residues:   6.7880
+distance between the 64-th residues:   6.3750
+distance between the 65-th residues:   6.3625
+distance between the 66-th residues:   6.5198
+distance between the 67-th residues:   6.6849
+distance between the 68-th residues:   6.2910
+distance between the 69-th residues:   8.8401
+distance between the 70-th residues:  11.0717
+distance between the 71-th residues:  11.2734
+distance between the 72-th residues:   9.4421
+distance between the 73-th residues:   5.3814
+distance between the 74-th residues:   7.1645
+distance between the 75-th residues:   8.0420
+distance between the 76-th residues:   9.0220
+distance between the 77-th residues:   9.4832
+distance between the 78-th residues:   8.9885
+distance between the 79-th residues:   7.1699
+distance between the 80-th residues:   9.2687
+distance between the 81-th residues:   9.1017
+distance between the 82-th residues:   9.7151
+distance between the 83-th residues:   8.0368
+distance between the 84-th residues:   7.9175
+distance between the 85-th residues:   9.6240
+distance between the 86-th residues:   8.1837
+distance between the 87-th residues:   7.1177
+distance between the 88-th residues:   3.4468
+distance between the 89-th residues:   3.8146
+distance between the 90-th residues:   7.9054
+distance between the 91-th residues:   9.1068
+distance between the 92-th residues:   8.8874
+distance between the 93-th residues:  11.2058
+distance between the 94-th residues:  11.1072
+distance between the 95-th residues:  11.1038
+distance between the 96-th residues:  10.7726
+distance between the 97-th residues:  10.8982
+distance between the 98-th residues:   9.3681
+distance between the 99-th residues:   9.6723
+distance between the 100-th residues:  10.1034
+distance between the 101-th residues:   8.7541
+distance between the 102-th residues:   8.0021
+distance between the 103-th residues:   9.9939
+distance between the 104-th residues:   8.0751
+distance between the 105-th residues:   7.4168
+distance between the 106-th residues:   5.1353
+distance between the 107-th residues:   5.2852
+distance between the 108-th residues:   5.1421
+distance between the 109-th residues:   5.6839
+distance between the 110-th residues:   7.3639
+distance between the 111-th residues:   7.6323
+distance between the 112-th residues:   8.6101
+distance between the 113-th residues:   8.2586
+distance between the 114-th residues:   6.1121
+distance between the 115-th residues:   4.7876
+distance between the 116-th residues:   5.2873
+distance between the 117-th residues:   5.6119
+distance between the 118-th residues:   4.1850
+distance between the 119-th residues:   5.1851
+distance between the 120-th residues:   4.9471
+distance between the 121-th residues:   4.2784
+distance between the 122-th residues:   4.3610
+distance between the 123-th residues:   4.6352
+distance between the 124-th residues:   4.9821
+distance between the 125-th residues:   4.2547
+distance between the 126-th residues:   5.0760
+distance between the 127-th residues:   4.8036
+distance between the 128-th residues:   4.5488
+distance between the 129-th residues:   4.8057
+distance between the 130-th residues:   4.5738
+distance between the 131-th residues:   4.1707
+distance between the 132-th residues:   4.6178
+distance between the 133-th residues:   5.0303
+distance between the 134-th residues:   4.8682
+distance between the 135-th residues:   6.3140
+distance between the 136-th residues:   8.0358
+distance between the 137-th residues:   9.4776
+distance between the 138-th residues:   8.8717
+distance between the 139-th residues:   8.7004
+distance between the 140-th residues:   6.3616
+distance between the 141-th residues:   9.2208
+distance between the 142-th residues:   9.6333
+distance between the 143-th residues:   8.2013
+distance between the 144-th residues:   6.2799
+distance between the 145-th residues:   5.5570
+distance between the 146-th residues:   7.1346
+distance between the 147-th residues:   9.9763
+distance between the 148-th residues:  10.5848
+distance between the 149-th residues:  10.5965
+distance between the 150-th residues:   8.1077
+distance between the 151-th residues:   5.0899
+distance between the 152-th residues:   6.4058
+distance between the 153-th residues:   8.8291
+distance between the 154-th residues:   9.8469
+distance between the 155-th residues:  10.4883
+distance between the 156-th residues:   9.8210
+distance between the 157-th residues:  17.2010
+distance between the 158-th residues:  17.1760
+distance between the 159-th residues:  15.1308
+distance between the 160-th residues:  15.8005
+distance between the 161-th residues:  17.9678
+distance between the 162-th residues:  12.2709
+distance between the 163-th residues:  11.5640
+distance between the 164-th residues:   8.0474
+distance between the 165-th residues:   9.3793
+distance between the 166-th residues:   8.0985
+distance between the 167-th residues:   5.9977
+distance between the 168-th residues:   5.1690
+distance between the 169-th residues:   5.6409
+distance between the 170-th residues:   5.0398
+distance between the 171-th residues:   8.6004
+distance between the 172-th residues:   9.4680
+distance between the 173-th residues:   9.7229
+distance between the 174-th residues:  10.4282
+distance between the 175-th residues:  10.8671
+distance between the 176-th residues:   8.2344
+distance between the 177-th residues:   5.6021
+distance between the 178-th residues:   6.4963
+distance between the 179-th residues:   5.2479
+distance between the 180-th residues:   5.8343
+distance between the 181-th residues:   5.3018
+distance between the 182-th residues:   5.4665
+distance between the 183-th residues:   4.8112
+distance between the 184-th residues:   5.1826
+distance between the 185-th residues:   5.8925
+distance between the 186-th residues:   5.6567
+distance between the 187-th residues:   5.0321
+distance between the 188-th residues:   5.3583
+distance between the 189-th residues:   5.7143
+distance between the 190-th residues:   5.2318
+distance between the 191-th residues:   4.6763
+distance between the 192-th residues:   6.2044
+distance between the 193-th residues:   9.5195
+distance between the 194-th residues:   8.7774
+distance between the 195-th residues:   8.9004
+distance between the 196-th residues:   9.1840
+distance between the 197-th residues:   6.8658
+distance between the 198-th residues:  10.9589
+distance between the 199-th residues:  11.3255
+distance between the 200-th residues:   9.8554
+distance between the 201-th residues:   7.1010
+distance between the 202-th residues:   8.0195
+distance between the 203-th residues:   4.2757
+distance between the 204-th residues:   3.6599
+distance between the 205-th residues:   4.2815
+distance between the 206-th residues:   3.7702
+distance between the 207-th residues:   4.3632
+distance between the 208-th residues:   4.3754
+distance between the 209-th residues:   4.2489
+distance between the 210-th residues:   4.1709
+distance between the 211-th residues:   4.4802
+distance between the 212-th residues:   4.4655
+distance between the 213-th residues:   4.6660
+distance between the 214-th residues:   8.1755
+distance between the 215-th residues:   8.6092
+distance between the 216-th residues:   8.0079
+distance between the 217-th residues:   7.7161
+distance between the 218-th residues:   7.2100
+distance between the 219-th residues:   5.2830
+distance between the 220-th residues:   5.2248
+distance between the 221-th residues:   5.9164
+distance between the 222-th residues:   4.8761
+distance between the 223-th residues:   5.6661
+distance between the 224-th residues:   8.4140
+distance between the 225-th residues:   9.0785
+distance between the 226-th residues:   8.3961
+distance between the 227-th residues:   5.0599
+distance between the 228-th residues:   4.6792
+distance between the 229-th residues:   4.2861
+distance between the 230-th residues:   4.1418
+distance between the 231-th residues:   4.9013
+distance between the 232-th residues:   4.0646
+distance between the 233-th residues:   3.9748
+distance between the 234-th residues:   4.6884
+distance between the 235-th residues:   7.4694
+distance between the 236-th residues:   8.2401
+distance between the 237-th residues:   7.2970
+distance between the 238-th residues:   8.4204
+distance between the 239-th residues:   8.6346
+distance between the 240-th residues:   8.2316
+distance between the 241-th residues:   8.5637
+distance between the 242-th residues:   8.5454
+distance between the 243-th residues:   7.1245
+distance between the 244-th residues:   6.3949
+distance between the 245-th residues:   6.1767
+distance between the 246-th residues:   6.4844
+distance between the 247-th residues:   5.3555
+distance between the 248-th residues:   8.8543
+distance between the 249-th residues:   8.3680
+distance between the 250-th residues:   6.8594
+distance between the 251-th residues:   5.8167
+distance between the 252-th residues:   6.9700
+distance between the 253-th residues:  11.8283
+distance between the 254-th residues:   6.9686
+distance between the 255-th residues:   8.2440
+distance between the 256-th residues:   4.8751
+distance between the 257-th residues:   6.8041
+distance between the 258-th residues:   7.1141
+distance between the 259-th residues:   4.4844
+distance between the 260-th residues:   5.0030
+distance between the 261-th residues:   5.6669
+distance between the 262-th residues:   5.1928
+distance between the 263-th residues:   4.8040
+distance between the 264-th residues:   5.1530
+distance between the 265-th residues:   5.5898
+distance between the 266-th residues:   5.3011
+distance between the 267-th residues:   4.7798
+distance between the 268-th residues:   6.2515
+distance between the 269-th residues:   6.6499
+distance between the 270-th residues:   9.0514
+distance between the 271-th residues:   8.8910
+distance between the 272-th residues:   6.3435
+distance between the 273-th residues:   7.9696
+distance between the 274-th residues:   5.2748
+distance between the 275-th residues:   4.9829
+distance between the 276-th residues:   8.7228
+distance between the 277-th residues:   9.3904
+distance between the 278-th residues:   9.8919
+distance between the 279-th residues:   7.9770
+distance between the 280-th residues:   5.5673
+distance between the 281-th residues:   5.6052
+distance between the 282-th residues:   6.3016
+distance between the 283-th residues:   5.5415
+distance between the 284-th residues:   5.4585
+distance between the 285-th residues:   9.2401
+distance between the 286-th residues:   9.4690
+distance between the 287-th residues:   6.0354
+distance between the 288-th residues:   4.2494
+distance between the 289-th residues:   5.7161
+distance between the 290-th residues:   5.7700
+distance between the 291-th residues:   4.0712
+distance between the 292-th residues:   7.4665
+distance between the 293-th residues:   8.4896
+distance between the 294-th residues:   7.8463
+distance between the 295-th residues:   4.8995
+distance between the 296-th residues:   5.3856
+distance between the 297-th residues:   5.6011
+distance between the 298-th residues:   4.4978
+distance between the 299-th residues:   8.4546
+distance between the 300-th residues:   7.4606
+distance between the 301-th residues:   7.6197
+distance between the 302-th residues:   8.0062
+distance between the 303-th residues:   8.1200
+distance between the 304-th residues:  23.6430
+distance between the 305-th residues:  24.1280
+distance between the 306-th residues:   3.0865
+distance between the 307-th residues:   3.2079
+distance between the 308-th residues:   2.3330
+distance between the 309-th residues:   1.9554
+distance between the 310-th residues:   1.8722
+distance between the 311-th residues:   1.7910
+distance between the 312-th residues:   1.6923
+distance between the 313-th residues:   1.5212
+distance between the 314-th residues:   1.7327
+distance between the 315-th residues:   1.7433
+distance between the 316-th residues:   1.5237
+distance between the 317-th residues:   1.4567
+distance between the 318-th residues:   1.8104
+distance between the 319-th residues:   1.7723
+distance between the 320-th residues:   1.6994
+max distance between residues:  24.1280
+computing 1-th intermediate, alpha=0.040000... 
+done
+proteinizing 1-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+retrieved OESP solution
+done
+computing 2-th intermediate, alpha=0.041667... 
+done
+proteinizing 2-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+retrieved OESP solution
+done
+computing 3-th intermediate, alpha=0.043478... 
+done
+proteinizing 3-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+retrieved OESP solution
+done
+computing 4-th intermediate, alpha=0.045455... 
+done
+proteinizing 4-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+retrieved OESP solution
+done
+computing 5-th intermediate, alpha=0.047619... 
+done
+proteinizing 5-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+retrieved OESP solution
+done
+computing 6-th intermediate, alpha=0.050000... 
+done
+proteinizing 6-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+retrieved OESP solution
+done
+computing 7-th intermediate, alpha=0.052632... 
+done
+proteinizing 7-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+retrieved OESP solution
+done
+computing 8-th intermediate, alpha=0.055556... 
+done
+proteinizing 8-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+retrieved OESP solution
+done
+computing 9-th intermediate, alpha=0.058824... 
+done
+proteinizing 9-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+retrieved OESP solution
+done
+computing 10-th intermediate, alpha=0.062500... 
+done
+proteinizing 10-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+retrieved OESP solution
+done
+computing 11-th intermediate, alpha=0.066667... 
+done
+proteinizing 11-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+retrieved OESP solution
+done
+computing 12-th intermediate, alpha=0.071429... 
+done
+proteinizing 12-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+retrieved OESP solution
+done
+computing 13-th intermediate, alpha=0.076923... 
+done
+proteinizing 13-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+retrieved OESP solution
+done
+computing 14-th intermediate, alpha=0.083333... 
+done
+proteinizing 14-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+retrieved OESP solution
+done
+computing 15-th intermediate, alpha=0.090909... 
+done
+proteinizing 15-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+retrieved OESP solution
+done
+computing 16-th intermediate, alpha=0.100000... 
+done
+proteinizing 16-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+retrieved OESP solution
+done
+computing 17-th intermediate, alpha=0.111111... 
+done
+proteinizing 17-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+retrieved OESP solution
+done
+computing 18-th intermediate, alpha=0.125000... 
+done
+proteinizing 18-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+could not handle the 159-th residue
+no solution for the current lattice
+no OESP solution
+lattice edge length: 1.5, lattice density: 6, points on edge: 9, lat.Q=729
+computed PATH values
+retrieved OESP solution
+done
+computing 19-th intermediate, alpha=0.142857... 
+done
+proteinizing 19-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+could not handle the 159-th residue
+no solution for the current lattice
+no OESP solution
+lattice edge length: 1.5, lattice density: 6, points on edge: 9, lat.Q=729
+computed PATH values
+retrieved OESP solution
+done
+computing 20-th intermediate, alpha=0.166667... 
+done
+proteinizing 20-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+could not handle the 157-th residue
+no solution for the current lattice
+no OESP solution
+lattice edge length: 1.5, lattice density: 6, points on edge: 9, lat.Q=729
+computed PATH values
+retrieved OESP solution
+done
+computing 21-th intermediate, alpha=0.200000... 
+done
+proteinizing 21-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+could not handle the 157-th residue
+no solution for the current lattice
+no OESP solution
+lattice edge length: 1.5, lattice density: 6, points on edge: 9, lat.Q=729
+could not handle the 159-th residue
+no solution for the current lattice
+no OESP solution
+lattice edge length: 2.0, lattice density: 6, points on edge: 12, lat.Q=1728
+computed PATH values
+retrieved OESP solution
+done
+computing 22-th intermediate, alpha=0.250000... 
+done
+proteinizing 22-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+could not handle the 157-th residue
+no solution for the current lattice
+no OESP solution
+lattice edge length: 1.5, lattice density: 6, points on edge: 9, lat.Q=729
+could not handle the 159-th residue
+no solution for the current lattice
+no OESP solution
+lattice edge length: 2.0, lattice density: 6, points on edge: 12, lat.Q=1728
+could not handle the 159-th residue
+no solution for the current lattice
+no OESP solution
+failed
+Morphing failed.

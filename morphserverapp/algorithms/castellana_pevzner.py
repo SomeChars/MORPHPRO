@@ -1,6 +1,6 @@
-from .basic_operations import *
+import morphserverapp.algorithms.basic_operations as ba
 
-class CastellanaPevzner():
+class CastellanaPevzner:
 
     def __init__(self,start,finish):
         self.start = start
@@ -16,8 +16,8 @@ class CastellanaPevzner():
     def morph(self,k):
         p = [self.start]
         for i in range(k):
-            tmp = intermediate(p[i - 1],self.finish, 1 / (k + 2 - i))
-            proto = proteinize(tmp)
+            tmp = self.intermediate(p[i - 1],self.finish, 1 / (k + 2 - i))
+            proto = self.proteinize(tmp)
             p += [self.proto]
 
 # протеинизирует цепочку, лежащую в proto
@@ -37,7 +37,7 @@ class CastellanaPevzner():
                 min_id = -1
                 h = 0
                 for h in range(self.lattices**3):
-                    tmp = path[h][j-1]+escore(v(h,j-1),v(i,j))
+                    tmp = path[h][j-1]+self.escore(self.v(h,j-1),self.v(i,j))
                     if min > tmp:
                         min = tmp
                         min_id = h
@@ -54,12 +54,12 @@ class CastellanaPevzner():
         if best_id == -1:
             return False
         else:
-            backtrack(back,best_id,n-1)
+            self.backtrack(back,best_id,n-1)
             return True
 
     def backtrack(self,back, i, j):
         if i == -1: return
-        self.proto[j] = v(i,j)
+        self.proto[j] = self.v(i,j)
         self.backtrack(back,back[i][j],j-1)
 
 
@@ -86,7 +86,7 @@ class CastellanaPevzner():
 
 
     def escore(self,v1, v2):
-        d = dist(v1, v2)
+        d =  ba.dist(v1, v2)
         if d>=3.7 and d<=3.9:
             return 0
         else:
@@ -94,4 +94,4 @@ class CastellanaPevzner():
 
 
     def vscore(self,i, j):
-        return dist(v(i, j), self.proto[j])
+        return ba.dist(self.v(i, j), self.proto[j])

@@ -50,6 +50,7 @@
 <strong>Number of interpolation steps: </strong> {{morph_request.morphing_count}} <br>
 <h3>Morphing</h3>
 <form action="{{ action }}" accept-charset="UTF-8" method="post">
+        {% csrf_token %}
 <table id="morphing-settings">
     <thead>
     <tr><th>

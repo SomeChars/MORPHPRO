@@ -1,0 +1,114 @@
+starting...
+Morphing will be performed between two chains with 492 residues each.
+The morphing path will pass through 11 intermediate states.
+computing 1-th intermediate, alpha=0.083333... 
+done
+proteinizing 1-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+indFinalI = 108, indFinalH = 72
+starting adjustment...
+completed adjustment
+retrieved OESP solution
+done
+computing 2-th intermediate, alpha=0.090909... 
+done
+proteinizing 2-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+indFinalI = 108, indFinalH = 108
+starting adjustment...
+completed adjustment
+retrieved OESP solution
+done
+computing 3-th intermediate, alpha=0.100000... 
+done
+proteinizing 3-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+indFinalI = 108, indFinalH = 108
+starting adjustment...
+completed adjustment
+retrieved OESP solution
+done
+computing 4-th intermediate, alpha=0.111111... 
+done
+proteinizing 4-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+indFinalI = 108, indFinalH = 108
+starting adjustment...
+completed adjustment
+retrieved OESP solution
+done
+computing 5-th intermediate, alpha=0.125000... 
+done
+proteinizing 5-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+indFinalI = 108, indFinalH = 108
+starting adjustment...
+completed adjustment
+retrieved OESP solution
+done
+computing 6-th intermediate, alpha=0.142857... 
+done
+proteinizing 6-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+indFinalI = 72, indFinalH = 72
+starting adjustment...
+completed adjustment
+retrieved OESP solution
+done
+computing 7-th intermediate, alpha=0.166667... 
+done
+proteinizing 7-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+indFinalI = 72, indFinalH = 72
+starting adjustment...
+completed adjustment
+retrieved OESP solution
+done
+computing 8-th intermediate, alpha=0.200000... 
+done
+proteinizing 8-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+indFinalI = 72, indFinalH = 72
+starting adjustment...
+completed adjustment
+retrieved OESP solution
+done
+computing 9-th intermediate, alpha=0.250000... 
+done
+proteinizing 9-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+indFinalI = 72, indFinalH = 72
+starting adjustment...
+completed adjustment
+retrieved OESP solution
+done
+computing 10-th intermediate, alpha=0.333333... 
+done
+proteinizing 10-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+indFinalI = 72, indFinalH = 72
+starting adjustment...
+completed adjustment
+retrieved OESP solution
+done
+computing 11-th intermediate, alpha=0.500000... 
+done
+proteinizing 11-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+computed PATH values
+indFinalI = 72, indFinalH = 72
+starting adjustment...
+completed adjustment
+retrieved OESP solution
+done
+Morphing completed.

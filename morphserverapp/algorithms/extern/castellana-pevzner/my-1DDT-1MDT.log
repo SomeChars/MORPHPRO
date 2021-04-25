@@ -1,0 +1,23 @@
+starting...
+Morphing will be performed between two chains with 523 residues each.
+The morphing path will pass through 40 intermediate states.
+computing 1-th intermediate, alpha=0.024390... 
+done
+proteinizing 1-th intermediate... 
+lattice edge length: 1.0, lattice density: 6, points on edge: 6, lat.Q=216
+could not handle the 187-th residue
+no solution for the current lattice
+indFinalI = -1, indFinalH = -1
+no OESP solution
+lattice edge length: 1.5, lattice density: 6, points on edge: 9, lat.Q=729
+could not handle the 187-th residue
+no solution for the current lattice
+indFinalI = -1, indFinalH = -1
+no OESP solution
+lattice edge length: 2.0, lattice density: 6, points on edge: 12, lat.Q=1728
+could not handle the 187-th residue
+no solution for the current lattice
+indFinalI = -1, indFinalH = -1
+no OESP solution
+failed
+Morphing failed.
