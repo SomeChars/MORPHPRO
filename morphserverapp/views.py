@@ -9,6 +9,7 @@ from django.contrib import messages
 from Bio import PDB as pdb
 from .algorithms import statistics,pdb_utils,algo
 import datetime
+import json
 # Create your views here.
 
 
@@ -280,25 +281,21 @@ def morph_request(request,mr_id):
                  stats_raw['second protein']['number of residues']
                  ]
 
-    # print(force_str(pdb_utils.global_align(Pdb.objects.get(name=mr.protein_a_name).file.path,Pdb.objects.get(name=mr.protein_b_name).file.path)))
 
     if request.method == 'POST':
-
+        res = []
         if request.POST.get('algo') == 'naive':
             res = algo.naive_morph(mr)
         elif request.POST.get('algo') == 'pevzner_oe':
             res = algo.castellana_pevzner_oe_morph(mr)
-            print(res)
         elif request.POST.get('algo') == 'pevzner_oea':
             res = algo.castellana_pevzner_oea_morph(mr)
-            print(res)
         elif request.POST.get('algo') == 'pevzner_oeac':
             res = algo.castellana_pevzner_oeac_morph(mr)
-            print(res)
 
         show_template = loader.get_template('morphserverapp/jsclient.html')
 
-        return HttpResponse(show_template.render(request=request))
+        return HttpResponse(show_template.render({'res':res},request=request))
 
 
     return HttpResponse(morph_request_template.render({'user_greeting':request.session.get('name'),

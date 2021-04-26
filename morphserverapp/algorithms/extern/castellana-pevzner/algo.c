@@ -258,7 +258,7 @@ void solveOESP(Lattice lat, Protein proInter, short*** back, int *indFinalI, int
 
          if (hasSolution == RES_FAIL) {
 sprintf(status, "could not handle the %d-th residue\n", j);
-write_to_log(status);
+// write_to_log(status);
              break;
          }
 
@@ -266,10 +266,10 @@ write_to_log(status);
 //write_to_log(status);
       }
 
-if (hasSolution == RES_OK)
-    write_to_log("computed PATH values\n");
-else 
-    write_to_log("no solution for the current lattice\n");
+// if (hasSolution == RES_OK)
+//     write_to_log("computed PATH values\n");
+// else 
+//     write_to_log("no solution for the current lattice\n");
 
  
      int indFinI = -1;
@@ -318,7 +318,7 @@ else
 
 void adjustIntermediate(Lattice lat, int indFinalI, int indFinalH, Protein proInter, short*** back) {
 
-write_to_log("starting adjustment...\n");
+// write_to_log("starting adjustment...\n");
 
      assert(indFinalI >= 0);
      assert(validate_protein(proInter));
@@ -354,7 +354,7 @@ write_to_log("starting adjustment...\n");
            assert(indCurrH == -1);
     }
 
-write_to_log("completed adjustment\n");
+// write_to_log("completed adjustment\n");
 }
 
 int proteinize(Protein proInter, double latticeEdgeLen) {
@@ -397,16 +397,16 @@ int proteinize(Protein proInter, double latticeEdgeLen) {
        solveOESP(lat, proInter, back, &indFinalI, &indFinalH);
 
 sprintf(status, "indFinalI = %d, indFinalH = %d\n", indFinalI, indFinalH);
-write_to_log(status);
+// write_to_log(status);
 
        if (indFinalI >= 0) {
             assert(indFinalH >= 0);
             adjustIntermediate(lat, indFinalI, indFinalH, proInter, back);
             res = RES_OK;
-write_to_log("retrieved OESP solution\n");
+// write_to_log("retrieved OESP solution\n");
        }
-	else 
-write_to_log("no OESP solution\n");
+// 	else 
+// write_to_log("no OESP solution\n");
 
        if (back != NULL) {
            for (int j = 0; j < n; j++) {
@@ -484,7 +484,6 @@ void solveOESP(Lattice lat, Protein proInter, short**back, int *indFinal) {
                  double score = pathPrev[h] + escore(proInter, j, pLatPrev->p[h], pLatCurr->p[i]);
 
 #ifdef HEURISTIC
-
                  if (j >= 2) {
 
                     int indPrevPrev = back[j-1][h];
@@ -521,7 +520,7 @@ void solveOESP(Lattice lat, Protein proInter, short**back, int *indFinal) {
 
          if (hasSolution == RES_FAIL) {
 sprintf(status, "could not handle the %d-th residue\n", j);
-write_to_log(status);
+// write_to_log(status);
              break;
          }
 
@@ -529,10 +528,10 @@ write_to_log(status);
 //write_to_log(status);
       }
 
-if (hasSolution == RES_OK)
-    write_to_log("computed PATH values\n");
-else 
-    write_to_log("no solution for the current lattice\n");
+// if (hasSolution == RES_OK)
+//     write_to_log("computed PATH values\n");
+// else 
+//     write_to_log("no solution for the current lattice\n");
 
 
      int indFin = -1; 
@@ -630,10 +629,10 @@ int proteinize(Protein proInter, double latticeEdgeLen) {
        if (indFinal >= 0) {
             adjustIntermediate(lat, indFinal, proInter, back);
             res = RES_OK;
-write_to_log("retrieved OESP solution\n");
+// write_to_log("retrieved OESP solution\n");
        }
-	else 
-write_to_log("no OESP solution\n");
+// 	else 
+// write_to_log("no OESP solution\n");
 
        for (int j = 0; j < n; j++) 
            if (back[j] != NULL) free(back[j]);
@@ -658,15 +657,15 @@ int morph(Protein *p, int k) {
         double alpha = 1.0 / (k + 2 - i);
 
 sprintf(status, "computing %d-th intermediate, alpha=%f... \n", i, alpha);
-write_to_log(status); 
+// write_to_log(status); 
 
         Protein proInter = intermediate(p[i - 1], p[k+1], alpha);
 
 sprintf(status, "done\n");
-write_to_log(status); 
+// write_to_log(status); 
 
 sprintf(status, "proteinizing %d-th intermediate... \n", i);
-write_to_log(status); 
+// write_to_log(status); 
 
          double latticeEdgeLen = MIN_LATTICE_EDGE_LEN;
 
@@ -684,11 +683,11 @@ write_to_log(status);
               p[i] = copy_protein(proInter);
               free_protein(proInter); 
 sprintf(status, "done\n");
-write_to_log(status); 
+// write_to_log(status); 
 	  }
          else { 
 sprintf(status, "failed\n");
-write_to_log(status); 
+// write_to_log(status); 
               free_protein(proInter); 
               break;
 	  }
@@ -725,7 +724,7 @@ void free_protein_sequence(Protein* p, int k) {
 int main(int _n, char** args) {
 
 init_log();
-write_to_log("starting...\n");
+// write_to_log("starting...\n");
 
     init();
 
@@ -746,9 +745,9 @@ write_to_log("starting...\n");
     assert( k >= 0);
 
 sprintf(status, "Morphing will be performed between two chains with %d residues each.\n", n);   
-write_to_log(status);
+// write_to_log(status);
 sprintf(status, "The morphing path will pass through %d intermediate states.\n", k);
-write_to_log(status);
+// write_to_log(status);
 
 /*
 double distMax = -1.;
@@ -776,7 +775,7 @@ write_to_log(status);
     int res = morph(p, k);
 
     if (res == RES_FAIL) {
-write_to_log("Morphing failed.\n");       
+// write_to_log("Morphing failed.\n");       
        printf("FAIL");
        free_protein_sequence(p, k);
        return 1;
@@ -784,7 +783,7 @@ write_to_log("Morphing failed.\n");
 
     assert(res == RES_OK);
 
-write_to_log("Morphing completed.\n");
+// write_to_log("Morphing completed.\n");
 
     printf("SUCC ");
     printf("%d\n", k + 2);

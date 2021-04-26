@@ -1,14 +1,24 @@
 <!Doctype HTML>
+{% load static %}
+
 <html lang="en">
   <head>
     <title>
       JS client
     </title>
-    <!--meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/-->
-    <%= javascript_include_tag "Three.js", "Detector.js", "RequestAnimationFrame.js", "jquery-1.6.min.js", "jquery.corner.js" %>
-    <%= javascript_include_tag "web-3D-viewer.js" %>
-    <%= stylesheet_link_tag "jsclient", "common" %>
-    <%= favicon_link_tag(source='icon.ico', options={}) %>
+      <link rel="stylesheet" media="screen" href="{% static 'stylesheets/blueprint/screen.css' %}" />
+      <link rel="stylesheet" media="print" href="{% static 'stylesheets/blueprint/print.css' %}" />
+      <link rel="stylesheet" media="screen" href="{% static 'stylesheets/blueprint/ie.css' %}" />
+      <link rel="stylesheet" media="screen" href="{% static 'stylesheets/custom.css' %}" />
+      <link rel="stylesheet" media="screen" href="{% static 'stylesheets/common.css' %}" />
+      <link rel="stylesheet" media="screen" href="{% static 'stylesheets/pages.css' %}" />
+      <script src="{%static 'javascripts/Three.js'%}"></script>
+      <script src="{%static 'javascripts/Detector.js'%}"></script>
+      <script src="{%static 'javascripts/RequestAnimationFrame.js'%}"></script>
+      <script src="{%static 'javascripts/jquery-1.6.min.js'%}"></script>
+      <script src="{%static 'javascripts/jquery.corner.js'%}"></script>
+
+      <script src="{%static 'javascripts/web-3D-viewer.js'%}"></script>
   </head>
   <body>
     <div id="morph-step">Morph</div>
@@ -27,13 +37,13 @@
             You can rotate the protein with your mouse using drag-and-drop. In addition, you can use the following hot keys:
         </div>
         <table id="keys"><tr>
-                <td><span>h</span>or<span>left arrow</span></td><td>rotate left</td>
+                <td><span>h</span> or <span>left arrow</span></td><td>rotate left</td>
             </tr><tr>
-                <td><span>j</span>or<span>down arrow</span></td><td>rotate down</td>
+                <td><span>j</span> or <span>down arrow</span></td><td>rotate down</td>
             </tr><tr>
-                <td><span>k</span>or<span>up arrow</span></td><td>rotate up</td>
+                <td><span>k</span> or <span>up arrow</span></td><td>rotate up</td>
             </tr><tr>
-                <td><span>l</span>or<span>right arrow</span></td><td>rotate left</td>
+                <td><span>l</span> or <span>right arrow</span></td><td>rotate left</td>
             </tr><tr>
                 <td><span>+</span></td><td>zoom in</td>
             </tr><tr>
@@ -53,7 +63,10 @@
             Click anywhere to close this window.
         </footer>
     </div>
-    <%= yield %>
+
+    <div style="display: none" id="morphing">{{res}}</div>
+    <div style="display: none" id="webgl">"webgl"</div>
+
     <div id="footer" >
         <a href="<%= about_path %>">About</a>
         <a href="javascript:setSelection(); $('#settings').fadeIn()">Settings</a>

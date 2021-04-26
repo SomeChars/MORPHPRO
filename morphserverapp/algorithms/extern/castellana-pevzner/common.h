@@ -9,7 +9,7 @@
 
 #define  INF  1e+10
 #define  EPS  1e-8
-#define  M_PI 3.14159265358979
+//#define  M_PI 3.14159265358979
 
 #define sqr(X) ((X) * (X))
 

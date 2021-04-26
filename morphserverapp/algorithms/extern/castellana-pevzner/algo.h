@@ -38,6 +38,6 @@ extern int morph(Protein *p, int k);
 
 extern void free_protein_sequence(Protein* p, int k);
 
-extern int main();
+//extern int main();
 
 #endif  // RUN_H_

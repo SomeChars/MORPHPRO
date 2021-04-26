@@ -4,7 +4,7 @@ import time
 import subprocess
 from .pdb_utils import *
 from .broken_line import morph as bl_m
-from ..models import MorphRequest,Pdb
+from ..models import MorphRequest, Pdb
 
 
 def do_test():
@@ -68,10 +68,32 @@ def castellana_pevzner_oeac_morph(morph, test=False):
 
 
 def __max_dist(start, finish):
-    d = 0
+    d = dist(start[0], finish[0])
     for i in range(len(start)):
         x, y = start[i], finish[i]
-        d = min(d, dist(x, y))
+        d = max(d, dist(x, y))
+    return d
+
+# если вы чините этот сервер - простите меня за эту функцию, мне жаль
+def __answer_parser(line):
+    a = line[0].decode()
+    a = a.split('\n')[1:-1]
+    b = []
+    c = []
+    for i in a:
+        for j in i.split():
+            b.append(float(j))
+        c.append(b)
+        b = []
+
+    n = len(c[0])
+    d = []
+    e = []
+    for i in c:
+        for j in range(n // 3):
+            e.append([i[j], i[j + 1], i[j + 2]])
+        d.append(e)
+        e = []
     return d
 
 
@@ -99,30 +121,17 @@ def castellana_pevzner_morph(morph_request, filename, test=False):
     for i in idx_finish:
         script_input += '{}\n'.format(i)
     if morph_request.auto_interpolation:
-        script_input += '{}\n'.format(int(__max_dist(start, finish)))
+        interpolation = '{}\n'.format(3+int(__max_dist(start, finish)))
     else:
-        script_input += '{}\n'.format(morph_request.morphing_count)
-
+        interpolation = '{}\n'.format(morph_request.morphing_count)
+    script_input += interpolation
     script_input = script_input.encode()
+
     line = script.communicate(input=script_input)
-    print(line)
     t2 = time.time()
 
-    # парсим ответ
-    suc = line[0].decode()
-    suc = suc.split('\n')
-    # cкорее всего результат - число N, N строк из троек чисел
-
-    ans = []
-    amount, suc = suc[0], suc[1:]
-    for i in range(amount):
-        t, suc = suc[:3*n], suc[3*n:]
-        p = []
-        while len(t) > 0:
-            p += t[:3]
-            t = t[3:]
-        ans.append(p)
-    return ans
+    parsed_line = __answer_parser(line)
+    return parsed_line
 
 
 def qcp_align(start, finish, test=False):

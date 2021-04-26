@@ -1,8 +1,8 @@
 #ifndef LATTICE_H_
 #define LATTICE_H_
 
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #include "common.h"
 

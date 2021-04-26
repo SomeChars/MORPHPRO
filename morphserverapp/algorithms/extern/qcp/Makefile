@@ -5,7 +5,8 @@ CC = gcc
 
 OBJECTS = qcprot.o main.o
 
-all:				run
+all:				
+		g++ main.c -o run
 
 run:			qcprot.o $(OBJECTS)
 					$(CC) $(OPT) $(CFLAGS) $(OBJECTS) $(LIBS) -o run
@@ -17,5 +18,5 @@ main.o:				main.c
 					$(CC) $(OPT) $(CFLAGS) $(INCDIR) -c main.c
 
 clean:
-					rm *.o run
+					rm run
 

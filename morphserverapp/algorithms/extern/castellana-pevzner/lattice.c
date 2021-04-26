@@ -14,7 +14,7 @@ void _set_Q(Lattice *pLat) {
    pLat->Q = ptsOnEdge * ptsOnEdge * ptsOnEdge;
 
 sprintf(info, "lattice edge length: %2.1f, lattice density: %d, points on edge: %d, lat.Q=%d\n", edgeLen, LATTICE_DENSITY, ptsOnEdge, pLat->Q);
-write_to_log(info);
+// write_to_log(info);
 }
 
 void _set_p(Lattice *pLat) {
@@ -197,13 +197,13 @@ void log_lattice(Lattice lat) {
 
     char info[80];
 
-    write_to_log("logging the current lattice:\n");
+//     write_to_log("logging the current lattice:\n");
 
     sprintf(info, "Edge length: %2.1f; number of points: %d\n", lat.edgeLen, lat.Q);
-    write_to_log(info);        
+//     write_to_log(info);        
 
     for (int i = 0; i < lat.Q; i++) {
         sprintf(info, "%d-th lattice point: (%4.2f, %4.2f, %4.2f), vscore: %6.4f\n", i, lat.p[i][0], lat.p[i][1], lat.p[i][2], lat.vscores[i]);
-        write_to_log(info);        
+//         write_to_log(info);        
     }
 }
