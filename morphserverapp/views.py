@@ -286,7 +286,6 @@ def morph_request(request,mr_id):
 
         if request.POST.get('algo') == 'naive':
             res = algo.naive_morph(mr)
-            print(res)
         elif request.POST.get('algo') == 'pevzner_oe':
             res = algo.castellana_pevzner_oe_morph(mr)
             print(res)
@@ -299,11 +298,11 @@ def morph_request(request,mr_id):
 
         show_template = loader.get_template('morphserverapp/jsclient.html')
 
-        HttpResponseRedirect('')
+        return HttpResponse(show_template.render(request=request))
 
 
     return HttpResponse(morph_request_template.render({'user_greeting':request.session.get('name'),
-                                                       'morph_request':mr,'submitter':submitter,'action':str(mr_id)+'?/show',
+                                                       'morph_request':mr,'submitter':submitter,'action':str(mr_id),
                                                        'stats':stats},request))
 
 

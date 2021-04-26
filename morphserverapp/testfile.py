@@ -1,6 +1,7 @@
 import random
 from Bio import PDB as pdb
 import morphserverapp.algorithms.pdb_utils as utils
+from morphserverapp.models import User
 
 # t = struct.Structure('MAESDB')
 # s = t.get_chains()

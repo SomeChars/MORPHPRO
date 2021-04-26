@@ -98,13 +98,14 @@ def castellana_pevzner_morph(morph_request, filename, test=False):
         script_input += '{} {} {}\n'.format(i[0], i[1], i[2])
     for i in idx_finish:
         script_input += '{}\n'.format(i)
-    if morph.auto_interpolation:
-        script_input += '{}\n'.format(auto_interpolation_number(start, finish))
+    if morph_request.auto_interpolation:
+        script_input += '{}\n'.format(int(__max_dist(start, finish)))
     else:
         script_input += '{}\n'.format(morph_request.morphing_count)
 
     script_input = script_input.encode()
     line = script.communicate(input=script_input)
+    print(line)
     t2 = time.time()
 
     # парсим ответ
