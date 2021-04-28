@@ -9,7 +9,6 @@ from django.contrib import messages
 from Bio import PDB as pdb
 from .algorithms import statistics,pdb_utils,algo
 import datetime
-import json
 # Create your views here.
 
 
@@ -202,7 +201,7 @@ def archive(request):
                 author = 'Anonymous'
         except User.DoesNotExist:
             return HttpResponseRedirect('../')
-        all_mr_table.append([str(author),str(mr.created_at)[:len(str(mr.created_at))-7],str(mr.protein_a_name),str(mr.protein_b_name),
+        all_mr_table.append([str(author),str(mr.protein_a_name),str(mr.protein_b_name),
                          str(mr.morphing_count),'/morph/'+str(mr.id)])
     return HttpResponse(archive_template.render({'morph_requests':all_mr_table,'user_greeting':request.session.get('name')},request))
 
@@ -212,8 +211,8 @@ def history(request):
     my_mr_table = []
     for mr in MorphRequest.objects.all():
         if mr.author == request.session.get('user_id'):
-            my_mr_table.append([str(mr.created_at)[:len(str(mr.created_at)) - 7], str(mr.protein_a_name),
-                 str(mr.protein_b_name), str(mr.morphing_count), '/morph/' + str(mr.id)])
+            my_mr_table.append([str(mr.protein_a_name),
+                 str(mr.protein_b_name), str(mr.morphing_count), str(mr.created_at)[:len(str(mr.created_at)) - 7],'/morph/' + str(mr.id)])
     return HttpResponse(my_request_template.render({'morph_requests': my_mr_table, 'user_greeting': request.session.get('name')},request))
 
 
@@ -271,6 +270,7 @@ def morph_request(request,mr_id):
     struct_b = pdb.PDBParser().get_structure('idb',Pdb.objects.get(name=mr.protein_b_name).file.path)
     bl1 = pdb_utils.__to_broken_line_struct(struct_a)
     bl2 = pdb_utils.__to_broken_line_struct(struct_b)
+
     stats_raw = statistics.analyze(bl1,bl2)
     stats = [stats_raw['rmsd'],
                  stats_raw['first protein']['minimum distance between consecutive residues'],
@@ -292,14 +292,16 @@ def morph_request(request,mr_id):
             res = algo.castellana_pevzner_oea_morph(mr)
         elif request.POST.get('algo') == 'pevzner_oeac':
             res = algo.castellana_pevzner_oeac_morph(mr)
-
         show_template = loader.get_template('morphserverapp/jsclient.html')
 
-        return HttpResponse(show_template.render({'res':res},request=request))
+
+        return HttpResponse(show_template.render({'res':res,'engine':request.POST.get('engine')},request=request))
+
+
 
 
     return HttpResponse(morph_request_template.render({'user_greeting':request.session.get('name'),
                                                        'morph_request':mr,'submitter':submitter,'action':str(mr_id),
-                                                       'stats':stats},request))
+                                                       'stats':stats,'pr1':[bl1],'pr2':[bl2],'engine':'webgl'},request))
 
 

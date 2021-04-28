@@ -1,7 +1,7 @@
 /* Основные настройки */
 var 
-    SCREEN_WIDTH = window.innerWidth, /* размеры области рисования */
-    SCREEN_HEIGHT = window.innerHeight,
+    SCREEN_WIDTH = 2*window.innerWidth/3, /* размеры области рисования */
+    SCREEN_HEIGHT = 2*window.innerHeight/3, /* да простит меня господь за это*/
     ATOM_R = 0.2, /* радиус атома - колена ломаной */
     CYL_R = 0.1, /* радиус цилиндра - соединителя атомов */
     ATOM_DETALISATION = 10, /* количество полигонов на сфере */
@@ -21,7 +21,7 @@ var
 
 /* Основные объекты */
 var
-    camera, scene, renderer, light, morph, 
+    camera, scene, renderer, light, morph, container,
     group, atoms, links; // группа объектов сцены, атомы и перемычки
 
 var distD = 0, deltaY = 0, deltaX = 0; // отклонения на поворот объектов и удаление камеры
@@ -32,8 +32,11 @@ var morphStep, morphDir, morphProgress = 0, isMorphing = false; /* morphDir = 1 
 
 
 function initGraphics() {
-    var container = document.createElement('div');
-    document.body.appendChild(container);
+    container = document.createElement('div');
+    cc = document.body.children[0];
+    sr = cc.children[1];
+    ue = sr.children[9]
+    document.body.children[0].children[1].insertBefore(container,ue);
 
     /*var args = getUrlVars();
     if (args['webgl'] == 1) {
@@ -49,7 +52,7 @@ function initGraphics() {
             Detector.addGetWebGLMessage();
         }
         renderer = new THREE.WebGLRenderer({antialias: true} );
-        setDetalization(GRAPHICS_DETALIZATION_GREAT);
+        setDetalization(GRAPHICS_DETALIZATION_MEDIUM);
     } else {
         renderer = new THREE.CanvasRenderer();
         setDetalization(GRAPHICS_DETALIZATION_LOW);
@@ -80,13 +83,13 @@ function recreateScene() {
 
 function initScene() {
     camera = new THREE.Camera(75, SCREEN_WIDTH / SCREEN_HEIGHT, 0, 1000);
+    camera = new THREE.Camera(75, SCREEN_WIDTH / SCREEN_HEIGHT, 0, 1000);
     scene = new THREE.Scene();
     scene.addLight( new THREE.AmbientLight( 0x000020 ) );
 
     morphStep = 0;
     updateStats();
     var points = morph[0];
-
 
     var maxx = -10000, cx = 0, cy = 0, cz = 0;
 
@@ -143,7 +146,7 @@ function initScene() {
                 right(); break;
             case 75: case 38:
                 up(); break;
-            case 187: 
+            case 187:
                 zoomin(); break;
             case 189: case 188:
                 zoomout(); break;
@@ -160,6 +163,8 @@ function initScene() {
         }
     }
 }
+
+
 
 function init() {
     initGraphics();
@@ -289,7 +294,7 @@ function render() {
 }
 
 function animate() {
-    requestAnimationFrame(animate);
+    window.requestAnimationFrame(animate);
     render();
 }
 
@@ -464,12 +469,25 @@ function updateStats() {
 
 
 // ТОЧКА ВХОДА
-$(document).ready(function() {
+function web1Run(what){
+    $(document).ready(function() {
 /* Инициализация морфа */
-
-    morph = eval($("#morphing").html())
-    webgl = eval($("#webgl").html())
+/*Я не знаю js, поэтому создал эту копию чтобы отображать сразу 2 протеина*/
+    if (container){
+        web1Delete()
+    }
+    morph = eval($(what).html());
+    webgl = eval($(what).html());
 
     init();
     animate();
 });
+}
+
+function web1Delete(){
+    if (container){
+        document.body.children[0].children[1].removeChild(container)
+        container = undefined
+    }
+}
+

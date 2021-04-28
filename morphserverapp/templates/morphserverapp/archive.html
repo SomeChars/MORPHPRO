@@ -3,7 +3,6 @@
 {% load static %}
 <head>
 <title>MORPH-PRO</title>
-<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <link rel="stylesheet" media="screen" href="{% static 'stylesheets/blueprint/screen.css' %}" />
 <link rel="stylesheet" media="print" href="{% static 'stylesheets/blueprint/print.css' %}" />
 <link rel="stylesheet" media="screen" href="{% static 'stylesheets/blueprint/ie.css' %}" />
@@ -49,7 +48,6 @@
     <thead>
     <tr>
       <th>submitter</th>
-      <th>date</th>
       <th>initial</th>
       <th>target</th>
       <th>interpolation states</th>
@@ -60,7 +58,7 @@
     {% if morph_requests|length > 0 %}
     {% for morph_request in morph_requests %}
       <tr>
-          {% for val in morph_request|slice:":5" %}
+          {% for val in morph_request|slice:":4" %}
           <td>{{val}}</td>
           {% endfor %}
           <td>

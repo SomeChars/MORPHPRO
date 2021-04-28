@@ -44,7 +44,6 @@ def naive_morph(morph, test=False):
         print(len(start), ' is len of start')
         return None
     start, finish = qcp_align(start, finish)
-    # what are those?
     return bl_m(start, finish, morph.morphing_count)
 
 
@@ -60,11 +59,11 @@ def castellana_pevzner_oe_morph(morph, test=False):
 
 
 def castellana_pevzner_oea_morph(morph, test=False):
-    castellana_pevzner_morph(morph, "oea", test)
+    return castellana_pevzner_morph(morph, "oea", test)
 
 
 def castellana_pevzner_oeac_morph(morph, test=False):
-    castellana_pevzner_morph(morph, "oeac", test)
+    return castellana_pevzner_morph(morph, "oeac", test)
 
 
 def __max_dist(start, finish):
@@ -91,7 +90,7 @@ def __answer_parser(line):
     e = []
     for i in c:
         for j in range(n // 3):
-            e.append([i[j], i[j + 1], i[j + 2]])
+            e.append([i[j*3], i[j*3 + 1], i[j*3 + 2]])
         d.append(e)
         e = []
     return d
@@ -183,9 +182,3 @@ def __read_lines(mr):
 def __read_lines_and_align(mr):
     return global_align(Pdb.objects.get(name=mr.protein_a_name).file.path, Pdb.objects.get(name=mr.protein_b_name).file.path)
 
-
-if __name__ == '__main__':
-    # castellana_pevzner_morph(0, 'oe', True)
-    ans = qcp_align(0, 'oe', test=True)
-    print(ans)
-    pass

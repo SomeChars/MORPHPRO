@@ -15,5 +15,5 @@ urlpatterns = [
     path('morph/archive',views.archive, name='archive'),
     path('morph/new',views.new_morph,name='new_morph'),
     path('morph/<int:mr_id>',views.morph_request,name='morph_request'),
-    path('morph/<int:mr_id>/show',views.morph_request,name='jsclient'),
+    # path('morph/<int:mr_id>/show',views.morph_request,name='jsclient'),
 ]
