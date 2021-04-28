@@ -35,7 +35,7 @@ function initGraphics() {
     container = document.createElement('div');
     cc = document.body.children[0];
     sr = cc.children[1];
-    ue = sr.children[9]
+    ue = sr.children[2];
     document.body.children[0].children[1].insertBefore(container,ue);
 
     /*var args = getUrlVars();

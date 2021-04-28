@@ -13,13 +13,11 @@
     <script src="{%static 'javascripts/Detector.js'%}"></script>
     <script src="{%static 'javascripts/RequestAnimationFrame.js'%}"></script>
     <script src="{%static 'javascripts/jquery-1.6.min.js'%}"></script>
-    <script src="{%static 'javascripts/jquery.corner.js'%}"></script>
     <script src="{%static 'javascripts/web-3D-viewer1.js'%}"></script>
 
   <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}" />
 </head>
 <body>
-
 
   <div class="container">
     <header>
@@ -50,26 +48,28 @@
 </header>
     <section class="round">
       <h3>Details</h3>
-<strong>Submitter: </strong>{{ submitter }}<br>
-<strong>First Protein: </strong>{{ morph_request.protein_a_name }}<br>
-<strong>Second Protein: </strong>{{ morph_request.protein_b_name }}<br>
-<strong>Number of interpolation steps: </strong> {{morph_request.morphing_count}} <br>
-
-    <div class="niggers" style="display: none" id="morph-step">Morph</div>
-    <div style="display: none" id="webgl">{{engine}}</div>
 <table>
-    <thead><tr>
-        <th><label onclick="web1Run('#morphing1')"><input type="submit" value="Show first protein"/></label></th>
-        <th><label onclick="web1Run('#morphing2')"><input type="submit" value="Show second protein"/></label></th>
-        <th><label onclick="web1Delete()"><input type="submit" value="Hide"/></label></th>
+    <tr>
+        <th><strong>Submitter: </strong>{{ submitter }}</th>
+    </tr><tr>
+        <th><strong>First Protein: </strong>{{ morph_request.protein_a_name }}</th>
+        <th><label onclick="show1()"><input type="button" value="Show first protein"/></label></th>
+    </tr><tr>
+        <th><strong>Second Protein: </strong>{{ morph_request.protein_b_name }}</th>
+        <th><label onclick="show2()"><input type="button" value="Show second protein"/></label></th>
+    </tr><tr>
+        <th><strong>Number of interpolation steps: </strong> {{morph_request.morphing_count}} </th>
     </tr>
-</thead>
-    <tbody><tr>
-        <th><div style="display: none" id="morphing1">{{pr1}}</div></th>
-        <th><div style="display: none" id="morphing2">{{pr2}}</div></th>
-
-    </tr></tbody>
 </table>
+
+<div style="text-align: center">
+<label style="display: none" onclick="unshow()" id="delete-button"><input type="button" value="Hide protein"/></label>
+</div>
+
+<div style="display: none" id="morph-step">Morph</div>
+<div style="display: none" id="webgl">{{engine}}</div>
+<div style="display: none" id="morphing1">{{pr1}}</div>
+<div style="display: none" id="morphing2">{{pr2}}</div>
 
 <h3>Morphing</h3>
 <form action="{{ action }}" accept-charset="UTF-8" method="post">
@@ -123,6 +123,21 @@
 </footer>
 
   </div>
+
+  <script type="text/javascript">
+      function show1(){
+        web1Run('#morphing1')
+        document.getElementById("delete-button").style.display = "block"
+      }
+      function show2(){
+        web1Run('#morphing2')
+        document.getElementById("delete-button").style.display = "block"
+      }
+      function unshow(){
+        web1Delete()
+        document.getElementById("delete-button").style.display = "none"
+      }
+  </script>
 
 </body>
 </html>
