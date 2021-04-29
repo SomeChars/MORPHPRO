@@ -23,9 +23,9 @@
 
     <li><a href="/morph/new">morph!</a></li>
       {% if user_greeting %}
-      <li><a href="/history">my requests</a></li>
+      <li><a href="/history/1">my requests</a></li>
       {% endif %}
-    <li><a href="/morph/archive">archive</a></li>
+    <li><a href="/morph/archive/1">archive</a></li>
       {% if user_greeting %}
       <li> <a href="/user/sign_out">sign out</a></li>
       {% else %}
@@ -69,7 +69,14 @@
     {% endif %}
     </tbody>
 </table>
-
+        <div class="round" align="center">
+            {% if prev_page %}
+            <a href="{{prev_page}}"><<<  </a>
+            {% endif %}
+            {% if next_page %}
+            <a href="{{next_page}}">  >>></a>
+            {% endif %}
+        </div>
     </section>
     <footer>
   <nav class="round">

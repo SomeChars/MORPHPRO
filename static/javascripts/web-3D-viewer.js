@@ -468,8 +468,7 @@ $(document).ready(function() {
 /* Инициализация морфа */
 
     morph = eval($("#morphing").html())
-    webgl = eval($("#webgl").html())
-
+    webgl = document.getElementById("engine").innerHTML
     init();
     animate();
 });

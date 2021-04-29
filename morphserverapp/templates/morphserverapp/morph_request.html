@@ -28,9 +28,9 @@
 
     <li><a href="/morph/new">morph!</a></li>
       {% if user_greeting %}
-      <li><a href="/history">my requests</a></li>
+      <li><a href="/history/1">my requests</a></li>
       {% endif %}
-    <li><a href="/morph/archive">archive</a></li>
+    <li><a href="/morph/archive/1">archive</a></li>
       {% if user_greeting %}
       <li> <a href="/user/sign_out">sign out</a></li>
       {% else %}
@@ -46,6 +46,15 @@
   </div>
 </nav>
 </header>
+
+    {% if messages %}
+    <div class="notice  message round">
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
+    </div>
+    {% endif %}
+
     <section class="round">
       <h3>Details</h3>
 <table>
@@ -66,7 +75,7 @@
 <label style="display: none" onclick="unshow()" id="delete-button"><input type="button" value="Hide protein"/></label>
 </div>
 <div style="display: none" id="morph-step">Morph</div>
-<div style="display: none" id="webgl">{{engine}}</div>
+<div style="display: none" id="engine">{{engine}}</div>
 <div style="display: none" id="morphing1">{{pr1}}</div>
 <div style="display: none" id="morphing2">{{pr2}}</div>
 
@@ -84,14 +93,15 @@
     </thead>
     <tbody>
     <tr><td>
-    <input type="radio" name="algo" id="algo_naive" value="naive" checked="checked">
+    <input type="radio" name="algo" id="algo_naive" value="naive" checked="checked" onclick="hideHint()">
     <label for="algo_naive">Linear interpolation</label><br>
-    <input type="radio" name="algo" id="algo_pevzner_oe" value="pevzner_oe" checked="checked">
+    <input type="radio" name="algo" id="algo_pevzner_oe" value="pevzner_oe" checked="checked" onclick="hideHint()">
     <label for="algo_pevzner_oe">Basic strategy</label><br>
-    <input type="radio" name="algo" id="algo_pevzner_oea" value="pevzner_oea">
+    <input type="radio" name="algo" id="algo_pevzner_oea" value="pevzner_oea" onclick="hideHint()">
     <label for="algo_pevzner_oea">Simplified strategy</label><br>
-    <input type="radio" name="algo" id="algo_pevzner_oeac" value="pevzner_oeac" onclick="alert('Attention! For large proteins and a sufficiently large number of steps, this method may take several minutes.')">
+    <input type="radio" name="algo" id="algo_pevzner_oeac" value="pevzner_oeac" onclick="showHint()">
     <label for="algo_pevzner_oeac">Advanced strategy</label><br>
+    <div style="display: none" class="hint" id="hint_hidden">May take a long time</div>
     </td><td>
     <input type="radio" name="engine" id="engine_webgl" value="webgl" checked="checked">
     <label for="engine_webgl">Web GL</label><br>
@@ -135,6 +145,12 @@
       function unshow(){
         web1Delete()
         document.getElementById("delete-button").style.display = "none"
+      }
+      function showHint(){
+        document.getElementById("hint_hidden").style.display = "block"
+      }
+      function hideHint(){
+        document.getElementById("hint_hidden").style.display = "none"
       }
   </script>
 

@@ -129,6 +129,8 @@ def castellana_pevzner_morph(morph_request, filename, test=False):
     line = script.communicate(input=script_input)
     t2 = time.time()
 
+    if line[0].decode()[:4] == 'FAIL':
+        return None
     parsed_line = __answer_parser(line)
     return parsed_line
 
@@ -170,6 +172,7 @@ def qcp_align(start, finish, test=False):
 
     for i in range(1):
         f[i] = multiply(m, f[i])
+
     return s, f
 
 

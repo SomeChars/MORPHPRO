@@ -189,31 +189,67 @@ def new_password(request):
     return HttpResponse(new_password_template.render(request=request))
 
 
-def archive(request):
+def archive(request,page):
     archive_template = loader.get_template('morphserverapp/archive.html')
-    all_mr_table = []
+    noname_mr_table = MorphRequest.objects.all()[(page-1)*12:page*12]
+    mr_table = []
 
-    for mr in MorphRequest.objects.all():
+    for mr in noname_mr_table:
         try:
             if mr.author != 0:
                 author = User.objects.get(pk=mr.author).name
             else:
                 author = 'Anonymous'
         except User.DoesNotExist:
-            return HttpResponseRedirect('../')
-        all_mr_table.append([str(author),str(mr.protein_a_name),str(mr.protein_b_name),
+            author = 'Anonymous'
+
+        mr_table.append([str(author),str(mr.protein_a_name),str(mr.protein_b_name),
                          str(mr.morphing_count),'/morph/'+str(mr.id)])
-    return HttpResponse(archive_template.render({'morph_requests':all_mr_table,'user_greeting':request.session.get('name')},request))
+
+    if page == 1:
+        if MorphRequest.objects.latest('pk') in noname_mr_table:
+            return HttpResponse(
+                archive_template.render({'morph_requests': mr_table, 'user_greeting': request.session.get('name'),
+                                         'prev_page': None, 'next_page': None}, request))
+        return HttpResponse(
+            archive_template.render({'morph_requests': mr_table, 'user_greeting': request.session.get('name'),
+                                     'prev_page': None,'next_page':'./'+str(page+1)+'?'}, request))
+
+    if MorphRequest.objects.latest('pk') in noname_mr_table:
+        return HttpResponse(
+            archive_template.render({'morph_requests': mr_table, 'user_greeting': request.session.get('name'),
+                                     'prev_page': './'+str(page-1)+'?', 'next_page': None}, request))
+
+    return HttpResponse(archive_template.render({'morph_requests':mr_table,'user_greeting':request.session.get('name'),
+                                                 'prev_page':'./'+str(page-1)+'?','next_page':'./'+str(page+1)+'?'},request))
 
 
-def history(request):
-    my_request_template = loader.get_template('morphserverapp/history.html')
-    my_mr_table = []
-    for mr in MorphRequest.objects.all():
-        if mr.author == request.session.get('user_id'):
-            my_mr_table.append([str(mr.protein_a_name),
+def history(request,page):
+    history_template = loader.get_template('morphserverapp/history.html')
+    user_mr_table = MorphRequest.objects.filter(author=request.session.get('user_id'))[(page - 1) * 12:page * 12]
+    mr_table = []
+
+    for mr in user_mr_table:
+        mr_table.append([str(mr.protein_a_name),
                  str(mr.protein_b_name), str(mr.morphing_count), str(mr.created_at)[:len(str(mr.created_at)) - 7],'/morph/' + str(mr.id)])
-    return HttpResponse(my_request_template.render({'morph_requests': my_mr_table, 'user_greeting': request.session.get('name')},request))
+
+    if page == 1:
+        if MorphRequest.objects.latest('pk') in user_mr_table:
+            return HttpResponse(
+                history_template.render({'morph_requests': mr_table, 'user_greeting': request.session.get('name'),
+                                         'prev_page': None, 'next_page': None}, request))
+        return HttpResponse(
+            history_template.render({'morph_requests': mr_table, 'user_greeting': request.session.get('name'),
+                                     'prev_page': None, 'next_page': './' + str(page + 1) + '?'}, request))
+
+    if MorphRequest.objects.latest('pk') in user_mr_table:
+        return HttpResponse(
+            history_template.render({'morph_requests': mr_table, 'user_greeting': request.session.get('name'),
+                                     'prev_page': './' + str(page - 1) + '?', 'next_page': None}, request))
+
+    return HttpResponse(
+        history_template.render({'morph_requests': mr_table, 'user_greeting': request.session.get('name'),
+                                 'prev_page': './' + str(page - 1) + '?', 'next_page': './' + str(page + 1) + '?'},request))
 
 
 def new_morph(request):
@@ -292,8 +328,13 @@ def morph_request(request,mr_id):
             res = algo.castellana_pevzner_oea_morph(mr)
         elif request.POST.get('algo') == 'pevzner_oeac':
             res = algo.castellana_pevzner_oeac_morph(mr)
-        show_template = loader.get_template('morphserverapp/jsclient.html')
 
+        if res is None:
+            messages.add_message(request,messages.ERROR,"Chosen algotithm didn't manage to align {} and {}".format(
+                mr.protein_a_name, mr.protein_b_name))
+            return HttpResponseRedirect('./'+str(mr_id)+'?')
+
+        show_template = loader.get_template('morphserverapp/jsclient.html')
 
         return HttpResponse(show_template.render({'res':res,'engine':request.POST.get('engine')},request=request))
 

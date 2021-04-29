@@ -20,3 +20,5 @@ footer nav { float: none; }
 /* About */
 span.name a:link { text-decoration: none; }
 span.name a:hover {text-decoration: underline; }
+td {text-align: center; vertical-align: middle;}
+th {text-align: center; vertical-align: middle;}

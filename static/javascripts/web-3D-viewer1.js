@@ -477,7 +477,8 @@ function web1Run(what){
         web1Delete()
     }
     morph = eval($(what).html());
-    webgl = eval($(what).html());
+    webgl = document.getElementById("engine").innerHTML
+
 
     init();
     animate();
