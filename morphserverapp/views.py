@@ -191,7 +191,7 @@ def new_password(request):
 
 def archive(request,page):
     archive_template = loader.get_template('morphserverapp/archive.html')
-    noname_mr_table = MorphRequest.objects.all()[(page-1)*12:page*12]
+    noname_mr_table = MorphRequest.objects.all()[::-1][(page-1)*12:page*12]
     mr_table = []
 
     for mr in noname_mr_table:
@@ -203,15 +203,11 @@ def archive(request,page):
         except User.DoesNotExist:
             author = 'Anonymous'
 
-        if mr.auto_interpolation:
-            mr_table.append([str(author), str(mr.protein_a_name), str(mr.protein_b_name),
-                             'Auto interpolation', '/morph/' + str(mr.id)])
-        else:
-            mr_table.append([str(author),str(mr.protein_a_name),str(mr.protein_b_name),
-                         str(mr.morphing_count),'/morph/'+str(mr.id)])
+        mr_table.append([str(author),str(mr.protein_a_name),str(mr.protein_b_name),'/morph/'+str(mr.id)])
+
 
     if page == 1:
-        if MorphRequest.objects.latest('pk') in noname_mr_table:
+        if MorphRequest.objects.earliest('pk') in noname_mr_table:
             return HttpResponse(
                 archive_template.render({'morph_requests': mr_table, 'user_greeting': request.session.get('name'),
                                          'prev_page': None, 'next_page': None}, request))
@@ -219,7 +215,7 @@ def archive(request,page):
             archive_template.render({'morph_requests': mr_table, 'user_greeting': request.session.get('name'),
                                      'prev_page': None,'next_page':'./'+str(page+1)+'?'}, request))
 
-    if MorphRequest.objects.latest('pk') in noname_mr_table:
+    if MorphRequest.objects.earliest('pk') in noname_mr_table:
         return HttpResponse(
             archive_template.render({'morph_requests': mr_table, 'user_greeting': request.session.get('name'),
                                      'prev_page': './'+str(page-1)+'?', 'next_page': None}, request))
@@ -230,20 +226,15 @@ def archive(request,page):
 
 def history(request,page):
     history_template = loader.get_template('morphserverapp/history.html')
-    user_mr_table = MorphRequest.objects.filter(author=request.session.get('user_id'))[(page - 1) * 12:page * 12]
+    user_mr_table = MorphRequest.objects.filter(author=request.session.get('user_id'))[::-1][(page - 1) * 12:page * 12]
     mr_table = []
 
     for mr in user_mr_table:
-        if mr.auto_interpolation:
-            mr_table.append([str(mr.protein_a_name),
-                             str(mr.protein_b_name), 'Auto interpolation',
-                             str(mr.created_at)[:len(str(mr.created_at)) - 7], '/morph/' + str(mr.id)])
-        else:
-            mr_table.append([str(mr.protein_a_name),
-                    str(mr.protein_b_name), str(mr.morphing_count), str(mr.created_at)[:len(str(mr.created_at)) - 7],'/morph/' + str(mr.id)])
+        mr_table.append([str(mr.protein_a_name),
+                    str(mr.protein_b_name), str(mr.created_at)[:len(str(mr.created_at)) - 7],'/morph/' + str(mr.id)])
 
     if page == 1:
-        if MorphRequest.objects.latest('pk') in user_mr_table:
+        if MorphRequest.objects.filter(author=mr.author).earliest('pk') in user_mr_table:
             return HttpResponse(
                 history_template.render({'morph_requests': mr_table, 'user_greeting': request.session.get('name'),
                                          'prev_page': None, 'next_page': None}, request))
@@ -251,7 +242,7 @@ def history(request,page):
             history_template.render({'morph_requests': mr_table, 'user_greeting': request.session.get('name'),
                                      'prev_page': None, 'next_page': './' + str(page + 1) + '?'}, request))
 
-    if MorphRequest.objects.latest('pk') in user_mr_table:
+    if MorphRequest.objects.filter(author=mr.author).earliest('pk') in user_mr_table:
         return HttpResponse(
             history_template.render({'morph_requests': mr_table, 'user_greeting': request.session.get('name'),
                                      'prev_page': './' + str(page - 1) + '?', 'next_page': None}, request))
@@ -288,9 +279,7 @@ def new_morph(request):
         if not uid:
            uid = 0
 
-        morph_request_new = MorphRequest.create_request({'protein_a_name':pr_a_name,'protein_b_name':pr_b_name,'author':uid,
-                                                     'morphing_count':request.POST.get('morphing_count'),
-                                                     'auto_interpolation':request.POST.get('auto_interpolation')})
+        morph_request_new = MorphRequest.create_request({'protein_a_name':pr_a_name,'protein_b_name':pr_b_name,'author':uid})
 
         morph_request_new.save()
 
@@ -328,7 +317,8 @@ def morph_request(request,mr_id):
 
 
     if request.method == 'POST':
-        mr.morphing_count = int(request.POST.get("morphing_count"))
+        mr.morphing_count = int(request.POST.get('morphing_count'))
+        mr.auto_interpolation = bool(request.POST.get('auto_interpolation'))
         res = []
         if request.POST.get('algo') == 'naive':
             res = algo.naive_morph(mr)
@@ -346,7 +336,7 @@ def morph_request(request,mr_id):
 
         show_template = loader.get_template('morphserverapp/jsclient.html')
 
-        return HttpResponse(show_template.render({'res':res,'engine':request.POST.get('engine')},request=request))
+        return HttpResponse(show_template.render({'res':res,'engine':request.POST.get('engine'),'back':'./'+str(mr.pk)},request=request))
 
 
 

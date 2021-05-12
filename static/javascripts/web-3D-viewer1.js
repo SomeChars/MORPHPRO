@@ -1,7 +1,7 @@
 /* Основные настройки */
 var 
-    SCREEN_WIDTH = 2*window.innerWidth/3, /* размеры области рисования */
-    SCREEN_HEIGHT = 2*window.innerHeight/3, /* да простит меня господь за это*/
+    SCREEN_WIDTH = document.body.children[0].children[1].getBoundingClientRect().width - 30, /* размеры области рисования, -12 нужно */
+    SCREEN_HEIGHT = document.body.children[0].children[1].getBoundingClientRect().height,
     ATOM_R = 0.2, /* радиус атома - колена ломаной */
     CYL_R = 0.1, /* радиус цилиндра - соединителя атомов */
     ATOM_DETALISATION = 10, /* количество полигонов на сфере */
@@ -128,32 +128,13 @@ function initScene() {
     updateLinks();
     scene.addObject(group);
 
-    document.addEventListener( 'mousedown', onDocumentMouseDown, false );
-    document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-    document.addEventListener( 'mouseup', onDocumentMouseUp, false );
-    document.addEventListener( 'touchstart', onDocumentTouchStart, false );
-    document.addEventListener( 'touchmove', onDocumentTouchMove, false );
-    document.addEventListener( 'touchend', onDocumentTouchEnd, false );
-    document.onkeyup = function KeyCheck()  {
-        switch(event.keyCode) {
-            case 74: case 40:
-                down(); break;
-            case 72: case 37:
-                left(); break;
-            case 76: case 39:
-                right(); break;
-            case 75: case 38:
-                up(); break;
-            case 187:
-                zoomin(); break;
-            case 189: case 188:
-                zoomout(); break;
-            case 32:
-                stop();break;
-            default:
-                //console.debug(event.keyCode);
-        }
-    }
+    container.addEventListener( 'mousedown', onDocumentMouseDown, false );
+    container.addEventListener( 'mousemove', onDocumentMouseMove, false );
+    container.addEventListener( 'mouseup', onDocumentMouseUp, false );
+    container.addEventListener( 'touchstart', onDocumentTouchStart, false );
+    container.addEventListener( 'touchmove', onDocumentTouchMove, false );
+    container.addEventListener( 'touchend', onDocumentTouchEnd, false );
+    container.addEventListener( 'wheel', onWheel, {passive:false});
 }
 
 
@@ -362,6 +343,17 @@ function onDocumentTouchEnd( event ) {
         onMouseUp(event.touches[0].pageX, event.touches[0].pageY);
     }
 }
+
+function onWheel(event){
+    if (event.deltaY > 0){
+        zoomout()
+    }
+    else{
+        zoomin()
+    }
+    event.preventDefault();
+}
+
 
 // Возвращает аргументы ввиде массива
 function getUrlVars() {

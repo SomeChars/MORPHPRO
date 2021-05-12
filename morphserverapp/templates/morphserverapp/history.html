@@ -43,22 +43,21 @@
 </header>
 
     <section class="round">
-      <h1>My Morphing Requests</h1>
+      <h1 align="center" >My Morphing Requests</h1>
 <table id="index-morph-requests">
     <thead>
     <tr>
-      <th>initial</th>
-      <th>target</th>
-      <th>interpolation states</th>
-      <th>date</th>
-      <th></th>
+        <td><strong>Initial</strong></td>
+        <td><strong>Target</strong></td>
+        <td><strong>Date</strong></td>
+      <td></td>
     </tr>
     </thead>
     <tbody>
     {% if morph_requests|length > 0 %}
     {% for morph_request in morph_requests %}
       <tr>
-          {% for val in morph_request|slice:":4" %}
+          {% for val in morph_request|slice:":3" %}
           <td>{{val}}</td>
           {% endfor %}
           <td>

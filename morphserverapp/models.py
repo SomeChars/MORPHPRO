@@ -35,9 +35,6 @@ class MorphRequest(models.Model):
     protein_a_name = models.CharField(max_length=256)
     protein_b_name = models.CharField(max_length=256)
 
-    morphing_count = models.IntegerField()
-    auto_interpolation = models.BooleanField(default=False)
-
     created_at = models.DateTimeField()
 
 
@@ -47,8 +44,6 @@ class MorphRequest(models.Model):
         morph_request.author = data_dict['author']
         morph_request.protein_a_name = data_dict['protein_a_name']
         morph_request.protein_b_name = data_dict['protein_b_name']
-        morph_request.morphing_count = data_dict['morphing_count']
-        morph_request.auto_interpolation = data_dict['auto_interpolation']
         morph_request.created_at = datetime.datetime.now()
         return morph_request
 

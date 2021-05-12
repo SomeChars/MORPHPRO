@@ -13,7 +13,7 @@
     <script src="{%static 'javascripts/Detector.js'%}"></script>
     <script src="{%static 'javascripts/RequestAnimationFrame.js'%}"></script>
     <script src="{%static 'javascripts/jquery-1.6.min.js'%}"></script>
-    <script src="{%static 'javascripts/web-3D-viewer1.js'%}"></script>
+
 
   <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}" />
 </head>
@@ -61,19 +61,20 @@
       <h3 align="center">Details</h3>
 <table>
     <tr>
-        <th>Submitter: <strong>{{ submitter }}</strong></th>
+        <td>Submitter: <strong>{{ submitter }}</strong></td>
     </tr><tr>
-    <th><strong>First Protein: </strong>{{ morph_request.protein_a_name }}</th></tr>
-    <tr><th><label onclick="show1()"><input type="button" value="Show first protein"/></label></th>
+    <td>First Protein: <strong>{{ morph_request.protein_a_name }}</strong></td></tr>
+    <tr><td><label onclick="show1()"><input type="button" value="Show first protein"/></label></td>
     </tr><tr>
-    <th><strong>Second Protein: </strong>{{ morph_request.protein_b_name }}</th></tr>
-    <tr><th><label onclick="show2()"><input type="button" value="Show second protein"/></label></th>
+    <td>Second Protein: <strong>{{ morph_request.protein_b_name }}</strong></td></tr>
+    <tr><td><label onclick="show2()"><input type="button" value="Show second protein"/></label></td>
     </tr>
-    {% if not morph_request.auto_interpolation %}
     <tr>
-    <th><strong>Number of interpolation steps: </strong><input name="morphing_count" type="number" value="{{morph_request.morphing_count}}" style="width:32px" min="1" max="64"/></th>
+        <td id="au">Auto interpolation <input name="auto_interpolation" type="checkbox" checked="checked" onclick="changeState()"></td>
     </tr>
-    {% endif %}
+    <tr>
+    <td id="mc" style="display:none">Number of interpolation steps: <input name="morphing_count" type="number" value=8 style="width:32px" min="1" max="64"/></td>
+    </tr>
 </table>
 
 <div style="text-align: center">
@@ -87,31 +88,32 @@
 <h3 align="center">Morphing</h3>
     <table id="morphing-settings">
     <thead>
-    <tr><th>
+    <tr><td>
     Algorithm
-    </th>
-    <th>
+    </td>
+    <td>
     Graphics Engine
-    </th></tr>
+    </td></tr>
     </thead>
     <tbody>
     <tr>
-    <th><input type="radio" name="algo" id="algo_naive" value="naive" checked="checked" onclick="hideHint()">
-    <label for="algo_naive">Linear interpolation</label></th>
+    <td><input type="radio" name="algo" id="algo_naive" value="naive" checked="checked" onclick="hideHint()">
+    <label for="algo_naive">Linear interpolation</label></td>
     </tr><tr>
-    <th><input type="radio" name="algo" id="algo_pevzner_oe" value="pevzner_oe" checked="checked" onclick="hideHint()">
-        <label for="algo_pevzner_oe">Basic strategy</label></th>
-    <th><input type="radio" name="engine" id="engine_webgl" value="webgl" checked="checked">
-        <label for="engine_webgl">Web GL</label></th>
+    <td><input type="radio" name="algo" id="algo_pevzner_oe" value="pevzner_oe" checked="checked" onclick="hideHint()">
+        <label for="algo_pevzner_oe">Basic strategy</label></td>
+    <td><input type="radio" name="engine" id="engine_webgl" value="webgl" checked="checked">
+        <label for="engine_webgl">Web GL</label></td>
     </tr><tr>
-    <th><input type="radio" name="algo" id="algo_pevzner_oea" value="pevzner_oea" onclick="hideHint()" >
-    <label for="algo_pevzner_oea">Simplified strategy</label></th>
-    <th><input type="radio" name="engine" id="engine_canvas" value="canvas">
-        <label for="engine_canvas">Regular</label></th>
+    <td><input type="radio" name="algo" id="algo_pevzner_oea" value="pevzner_oea" onclick="hideHint()" >
+    <label for="algo_pevzner_oea">Simplified strategy</label></td>
+    <td><input type="radio" name="engine" id="engine_canvas" value="canvas">
+        <label for="engine_canvas">Regular</label></td>
     </tr><tr>
-    <th><input type="radio" name="algo" id="algo_pevzner_oeac" value="pevzner_oeac" onclick="showHint()"  >
+    <td><input type="radio" name="algo" id="algo_pevzner_oeac" value="pevzner_oeac" onclick="showHint()"  >
     <label for="algo_pevzner_oeac">Advanced strategy</label>
-        <div style="display: none" class="hint" id="hint_hidden">May take a long time</div></th>
+        <div style="display: none" class="hint" id="hint_hidden">May take a long time</div></td>
+    <td></td>
     </tr>
     </tbody>
 </table>
@@ -138,24 +140,33 @@
 
   </div>
 
+  <script src="{%static 'javascripts/web-3D-viewer1.js'%}"></script>
   <script type="text/javascript">
       function show1(){
         web1Run('#morphing1')
         document.getElementById("delete-button").style.display = "block"
       }
       function show2(){
-        web1Run('#morphing2')
-        document.getElementById("delete-button").style.display = "block"
+          web1Run('#morphing2')
+          document.getElementById("delete-button").style.display = "block"
       }
       function unshow(){
-        web1Delete()
-        document.getElementById("delete-button").style.display = "none"
+          web1Delete()
+          document.getElementById("delete-button").style.display = "none"
       }
       function showHint(){
-        document.getElementById("hint_hidden").style.display = "block"
+          document.getElementById("hint_hidden").style.display = "block"
       }
       function hideHint(){
-        document.getElementById("hint_hidden").style.display = "none"
+          document.getElementById("hint_hidden").style.display = "none"
+      }
+      function changeState(){
+        if (document.getElementById("mc").style.display == "none"){
+            document.getElementById("mc").style.display = "block";
+        }
+        else {
+            document.getElementById("mc").style.display = "none";
+        }
       }
   </script>
 

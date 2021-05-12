@@ -9,12 +9,9 @@
 <link rel="stylesheet" media="screen" href="{% static 'stylesheets/custom.css' %}" />
 <link rel="stylesheet" media="screen" href="{% static 'stylesheets/common.css' %}" />
 <link rel="stylesheet" media="screen" href="{% static 'stylesheets/pages.css' %}" />
-
-<script src="{%static 'javascripts/jquery-1.6.min.js'%}"></script>
-
+<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}" />
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}" />
 </head>
 <body>
   <div class="container">
@@ -55,7 +52,15 @@
     {% endif %}
 
     <section class="round">
-<h1>New morphing</h1>
+
+    <script type="text/javascript">
+    function updateProtoName(fileid, updatefieldid) {
+        var path = document.getElementById(fileid).value;
+        var ss = path.split(/[\\.]/);
+        document.getElementById(updatefieldid).value = ss[ss.length-2];
+    }
+</script>
+<h1 align="center">New morphing</h1>
 <form class="new_morph_request" id="new_morph_request" action="./new" method="post" enctype="multipart/form-data">
         {% csrf_token %}
     <table>
@@ -77,47 +82,11 @@
                 <input type="file" name="protein_b" id="protein_b" accept="pdb" onchange="updateProtoName('protein_b', 'morph_request_protein_b_name')">
             </td>
         </tr>
-        <tr>
-            <td>
-                <label for="auto_interpolation">Choose the number of intermediate states automatically</label>
-            </td>
-            <td>
-                <input name="auto_interpolation" type="hidden" value="0"><input onclick="toggleSteps();" type="checkbox" value="1" checked="checked" name="auto_interpolation" id="auto_interpolation">
-            </td>
-        </tr>
-        <tr id="morphing-count" style="display: none;">
-            <td>
-                <label for="mr_morphing_count">Number of intermediate <br> states</label>
-            </td>
-            <td>
-                <input size="3" value="8" type="text" name="morphing_count" id="mr_morphing_count">
-                <div class="hint">Should be between 2 and 20</div>
-            </td>
-        </tr>
     </tbody></table>
     <div style="text-align: center">
         <input type="submit" name="commit" value="Create Morph request" data-disable-with="Create Morph request">
     </div>
 </form>
-<script type="text/javascript">
-    function toggleSteps() {
-        var cb = $("#auto_interpolation");
-        var mc = $("#morphing-count");
-        if (cb.checked) {
-            mc.fadeOut();
-        }
-        else {
-            mc.fadeIn();
-        }
-    }
-
-    function updateProtoName(fileid, updatefieldid) {
-        var me = $('#' + fileid);
-        var filepath = me.val();
-        var ss = filepath.split(/[\\.]/);
-        $('#' + updatefieldid).attr('value', ss[ss.length - 2]);
-    }
-</script>
     </section>
     <footer>
   <nav class="round">

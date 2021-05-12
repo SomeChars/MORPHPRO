@@ -43,27 +43,26 @@
 </header>
 
     <section class="round">
-      <h1>Morphing Requests</h1>
+      <h1 align="center">Morphing Requests</h1>
 <table id="index-morph-requests">
-    <thead >
+    <thead>
     <tr>
-      <th>submitter</th>
-      <th>initial</th>
-      <th>target</th>
-      <th>interpolation states</th>
-      <th></th>
+        <td><strong>Submitter</strong></td>
+        <td><strong>Initial</strong></td>
+        <td><strong>Target</strong></td>
+      <td></td>
     </tr>
     </thead>
     <tbody>
     {% if morph_requests|length > 0 %}
     {% for morph_request in morph_requests %}
       <tr>
-          {% for val in morph_request|slice:":4" %}
-          <th>{{val}}</th>
+          {% for val in morph_request|slice:":3" %}
+          <td>{{val}}</td>
           {% endfor %}
-          <th>
+          <td>
               <form class="button_to" method="get" action="{{morph_request|last}}"><input type="submit" value="show"></form>
-          </th>
+          </td>
     {% endfor %}
     {% endif %}
     </tbody>

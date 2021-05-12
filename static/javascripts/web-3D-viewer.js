@@ -133,7 +133,8 @@ function initScene() {
     document.addEventListener( 'touchstart', onDocumentTouchStart, false );
     document.addEventListener( 'touchmove', onDocumentTouchMove, false );
     document.addEventListener( 'touchend', onDocumentTouchEnd, false );
-    document.onkeyup = function KeyCheck()  {
+    document.addEventListener( 'wheel', onWheel, false);
+    document.onkeydown = function KeyCheck()  {
         switch(event.keyCode) {
             case 74: case 40:
                 down(); break;
@@ -378,6 +379,15 @@ function onDocumentTouchEnd( event ) {
     if ( event.touches.length == 1 ) {
         event.preventDefault();
         onMouseUp(event.touches[0].pageX, event.touches[0].pageY);
+    }
+}
+
+function onWheel(event){
+    if (event.deltaY > 0){
+        zoomout()
+    }
+    else{
+        zoomin()
     }
 }
 
