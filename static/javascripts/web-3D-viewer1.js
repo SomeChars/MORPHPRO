@@ -33,10 +33,8 @@ var morphStep, morphDir, morphProgress = 0, isMorphing = false; /* morphDir = 1 
 
 function initGraphics() {
     container = document.createElement('div');
-    cc = document.body.children[0];
-    sr = cc.children[1];
-    ue = sr.children[2];
-    document.body.children[0].children[1].insertBefore(container,ue);
+    el = document.body.children[0].children[1].children[0].children[3];
+    document.body.children[0].children[1].children[0].insertBefore(container,el);
 
     /*var args = getUrlVars();
     if (args['webgl'] == 1) {
@@ -150,14 +148,8 @@ function initScene() {
                 zoomin(); break;
             case 189: case 188:
                 zoomout(); break;
-            case 78:
-                nextMorph(); break;
-            case 80:
-                prevMorph(); break;
             case 32:
                 stop();break;
-            case 84:
-                togglePlayback(); break;
             default:
                 //console.debug(event.keyCode);
         }
@@ -230,21 +222,6 @@ function morphProtein(atoms, cur, next, koef) {
     }
 }
 
-function nextMorph() {
-    if (isMorphing) return;
-    if (morphStep + 1 >= morph.length) return;
-    morphDir = 1;
-    morphProgress = 0;
-    isMorphing = true;
-}
-
-function prevMorph() {
-    if (isMorphing) return;
-    if (morphStep - 1 < 0) return;
-    morphDir = - 1;
-    morphProgress = 0;
-    isMorphing = true;
-}
 function externalRotate(obj, deltaY, deltaX) {
     var mx = obj.matrix;
     var r1 = new THREE.Matrix4();
@@ -435,18 +412,6 @@ function setDetalization(kind) {
     if (scene != undefined) recreateScene();
 }
 
-function togglePlayback() {
-    console.debug("done");
-    looping = !looping;
-    updateStats();
-    if (!looping) return;
-    isMorphing = true;
-    if (morphStep == morph.length - 1) {
-        morphDir = -1;
-    } else {
-        morphDir = 1;
-    }
-}
 
 function updateStats() {
     var text = "Playback";
@@ -487,7 +452,7 @@ function web1Run(what){
 
 function web1Delete(){
     if (container){
-        document.body.children[0].children[1].removeChild(container)
+        document.body.children[0].children[1].children[0].removeChild(container)
         container = undefined
     }
 }

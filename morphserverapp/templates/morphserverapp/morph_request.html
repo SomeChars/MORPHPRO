@@ -56,19 +56,24 @@
     {% endif %}
 
     <section class="round">
-      <h3>Details</h3>
+    <form action="{{ action }}" accept-charset="UTF-8" method="post">
+    {% csrf_token %}
+      <h3 align="center">Details</h3>
 <table>
     <tr>
-        <th><strong>Submitter: </strong>{{ submitter }}</th>
+        <th>Submitter: <strong>{{ submitter }}</strong></th>
     </tr><tr>
-        <th><strong>First Protein: </strong>{{ morph_request.protein_a_name }}</th>
-        <th><label onclick="show1()"><input type="button" value="Show first protein"/></label></th>
+    <th><strong>First Protein: </strong>{{ morph_request.protein_a_name }}</th></tr>
+    <tr><th><label onclick="show1()"><input type="button" value="Show first protein"/></label></th>
     </tr><tr>
-        <th><strong>Second Protein: </strong>{{ morph_request.protein_b_name }}</th>
-        <th><label onclick="show2()"><input type="button" value="Show second protein"/></label></th>
-    </tr><tr>
-        <th><strong>Number of interpolation steps: </strong> {{morph_request.morphing_count}} </th>
+    <th><strong>Second Protein: </strong>{{ morph_request.protein_b_name }}</th></tr>
+    <tr><th><label onclick="show2()"><input type="button" value="Show second protein"/></label></th>
     </tr>
+    {% if not morph_request.auto_interpolation %}
+    <tr>
+    <th><strong>Number of interpolation steps: </strong><input name="morphing_count" type="number" value="{{morph_request.morphing_count}}" style="width:32px" min="1" max="64"/></th>
+    </tr>
+    {% endif %}
 </table>
 
 <div style="text-align: center">
@@ -79,10 +84,8 @@
 <div style="display: none" id="morphing1">{{pr1}}</div>
 <div style="display: none" id="morphing2">{{pr2}}</div>
 
-<h3>Morphing</h3>
-<form action="{{ action }}" accept-charset="UTF-8" method="post">
-        {% csrf_token %}
-<table id="morphing-settings">
+<h3 align="center">Morphing</h3>
+    <table id="morphing-settings">
     <thead>
     <tr><th>
     Algorithm
@@ -92,22 +95,24 @@
     </th></tr>
     </thead>
     <tbody>
-    <tr><td>
-    <input type="radio" name="algo" id="algo_naive" value="naive" checked="checked" onclick="hideHint()">
-    <label for="algo_naive">Linear interpolation</label><br>
-    <input type="radio" name="algo" id="algo_pevzner_oe" value="pevzner_oe" checked="checked" onclick="hideHint()">
-    <label for="algo_pevzner_oe">Basic strategy</label><br>
-    <input type="radio" name="algo" id="algo_pevzner_oea" value="pevzner_oea" onclick="hideHint()">
-    <label for="algo_pevzner_oea">Simplified strategy</label><br>
-    <input type="radio" name="algo" id="algo_pevzner_oeac" value="pevzner_oeac" onclick="showHint()">
-    <label for="algo_pevzner_oeac">Advanced strategy</label><br>
-    <div style="display: none" class="hint" id="hint_hidden">May take a long time</div>
-    </td><td>
-    <input type="radio" name="engine" id="engine_webgl" value="webgl" checked="checked">
-    <label for="engine_webgl">Web GL</label><br>
-    <input type="radio" name="engine" id="engine_canvas" value="canvas">
-    <label for="engine_canvas">Regular</label><br>
-    </td></tr>
+    <tr>
+    <th><input type="radio" name="algo" id="algo_naive" value="naive" checked="checked" onclick="hideHint()">
+    <label for="algo_naive">Linear interpolation</label></th>
+    </tr><tr>
+    <th><input type="radio" name="algo" id="algo_pevzner_oe" value="pevzner_oe" checked="checked" onclick="hideHint()">
+        <label for="algo_pevzner_oe">Basic strategy</label></th>
+    <th><input type="radio" name="engine" id="engine_webgl" value="webgl" checked="checked">
+        <label for="engine_webgl">Web GL</label></th>
+    </tr><tr>
+    <th><input type="radio" name="algo" id="algo_pevzner_oea" value="pevzner_oea" onclick="hideHint()" >
+    <label for="algo_pevzner_oea">Simplified strategy</label></th>
+    <th><input type="radio" name="engine" id="engine_canvas" value="canvas">
+        <label for="engine_canvas">Regular</label></th>
+    </tr><tr>
+    <th><input type="radio" name="algo" id="algo_pevzner_oeac" value="pevzner_oeac" onclick="showHint()"  >
+    <label for="algo_pevzner_oeac">Advanced strategy</label>
+        <div style="display: none" class="hint" id="hint_hidden">May take a long time</div></th>
+    </tr>
     </tbody>
 </table>
 <div style="text-align: center">

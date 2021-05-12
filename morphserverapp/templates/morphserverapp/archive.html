@@ -59,11 +59,11 @@
     {% for morph_request in morph_requests %}
       <tr>
           {% for val in morph_request|slice:":4" %}
-          <td>{{val}}</td>
+          <th>{{val}}</th>
           {% endfor %}
-          <td>
+          <th>
               <form class="button_to" method="get" action="{{morph_request|last}}"><input type="submit" value="show"></form>
-          </td>
+          </th>
     {% endfor %}
     {% endif %}
     </tbody>

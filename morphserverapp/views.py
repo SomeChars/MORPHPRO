@@ -203,7 +203,11 @@ def archive(request,page):
         except User.DoesNotExist:
             author = 'Anonymous'
 
-        mr_table.append([str(author),str(mr.protein_a_name),str(mr.protein_b_name),
+        if mr.auto_interpolation:
+            mr_table.append([str(author), str(mr.protein_a_name), str(mr.protein_b_name),
+                             'Auto interpolation', '/morph/' + str(mr.id)])
+        else:
+            mr_table.append([str(author),str(mr.protein_a_name),str(mr.protein_b_name),
                          str(mr.morphing_count),'/morph/'+str(mr.id)])
 
     if page == 1:
@@ -230,8 +234,13 @@ def history(request,page):
     mr_table = []
 
     for mr in user_mr_table:
-        mr_table.append([str(mr.protein_a_name),
-                 str(mr.protein_b_name), str(mr.morphing_count), str(mr.created_at)[:len(str(mr.created_at)) - 7],'/morph/' + str(mr.id)])
+        if mr.auto_interpolation:
+            mr_table.append([str(mr.protein_a_name),
+                             str(mr.protein_b_name), 'Auto interpolation',
+                             str(mr.created_at)[:len(str(mr.created_at)) - 7], '/morph/' + str(mr.id)])
+        else:
+            mr_table.append([str(mr.protein_a_name),
+                    str(mr.protein_b_name), str(mr.morphing_count), str(mr.created_at)[:len(str(mr.created_at)) - 7],'/morph/' + str(mr.id)])
 
     if page == 1:
         if MorphRequest.objects.latest('pk') in user_mr_table:
@@ -319,6 +328,7 @@ def morph_request(request,mr_id):
 
 
     if request.method == 'POST':
+        mr.morphing_count = int(request.POST.get("morphing_count"))
         res = []
         if request.POST.get('algo') == 'naive':
             res = algo.naive_morph(mr)
