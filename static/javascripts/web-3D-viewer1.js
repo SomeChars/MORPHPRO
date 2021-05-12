@@ -1,7 +1,7 @@
 /* Основные настройки */
 var 
     SCREEN_WIDTH = document.body.children[0].children[1].getBoundingClientRect().width - 30, /* размеры области рисования, -12 нужно */
-    SCREEN_HEIGHT = document.body.children[0].children[1].getBoundingClientRect().height,
+    SCREEN_HEIGHT = SCREEN_WIDTH,
     ATOM_R = 0.2, /* радиус атома - колена ломаной */
     CYL_R = 0.1, /* радиус цилиндра - соединителя атомов */
     ATOM_DETALISATION = 10, /* количество полигонов на сфере */
