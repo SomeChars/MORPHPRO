@@ -234,7 +234,11 @@ def history(request,page):
                     str(mr.protein_b_name), str(mr.created_at)[:len(str(mr.created_at)) - 7],'/morph/' + str(mr.id)])
 
     if page == 1:
-        if MorphRequest.objects.filter(author=mr.author).earliest('pk') in user_mr_table:
+        if len(mr_table) == 0:
+            return HttpResponse(
+                history_template.render({'morph_requests': mr_table, 'user_greeting': request.session.get('name'),
+                                             'prev_page': None, 'next_page': None}, request))
+        if MorphRequest.objects.filter(author=request.session.get('user_id')).earliest('pk') in user_mr_table:
             return HttpResponse(
                 history_template.render({'morph_requests': mr_table, 'user_greeting': request.session.get('name'),
                                          'prev_page': None, 'next_page': None}, request))
@@ -242,7 +246,7 @@ def history(request,page):
             history_template.render({'morph_requests': mr_table, 'user_greeting': request.session.get('name'),
                                      'prev_page': None, 'next_page': './' + str(page + 1) + '?'}, request))
 
-    if MorphRequest.objects.filter(author=mr.author).earliest('pk') in user_mr_table:
+    if MorphRequest.objects.filter(author=request.session.get('id')).earliest('pk') in user_mr_table:
         return HttpResponse(
             history_template.render({'morph_requests': mr_table, 'user_greeting': request.session.get('name'),
                                      'prev_page': './' + str(page - 1) + '?', 'next_page': None}, request))

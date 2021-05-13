@@ -1,7 +1,7 @@
 /* Основные настройки */
 var 
-    SCREEN_WIDTH = document.body.children[0].children[1].getBoundingClientRect().width - 30, /* размеры области рисования, -12 нужно */
-    SCREEN_HEIGHT = document.body.children[0].children[1].getBoundingClientRect().height,
+    SCREEN_WIDTH = document.body.children[0].children[1].getBoundingClientRect().width - 30, /* размеры области рисования, -30 нужно */
+    SCREEN_HEIGHT = SCREEN_WIDTH,
     ATOM_R = 0.2, /* радиус атома - колена ломаной */
     CYL_R = 0.1, /* радиус цилиндра - соединителя атомов */
     ATOM_DETALISATION = 10, /* количество полигонов на сфере */
@@ -135,6 +135,16 @@ function initScene() {
     container.addEventListener( 'touchmove', onDocumentTouchMove, false );
     container.addEventListener( 'touchend', onDocumentTouchEnd, false );
     container.addEventListener( 'wheel', onWheel, {passive:false});
+    document.onkeydown = function KeyCheck()  {
+        switch(event.keyCode) {
+        case 187:
+            zoomin(); break;
+        case 189: case 188:
+            zoomout(); break;
+        default:
+            //default
+        }
+    }
 }
 
 
