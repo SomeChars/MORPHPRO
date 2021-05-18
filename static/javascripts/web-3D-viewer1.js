@@ -1,6 +1,10 @@
 /* Основные настройки */
 var 
+<<<<<<< HEAD
+    SCREEN_WIDTH = document.body.children[0].children[1].getBoundingClientRect().width - 30, /* размеры области рисования, -30 нужно */
+=======
     SCREEN_WIDTH = document.body.children[0].children[1].getBoundingClientRect().width - 30, /* размеры области рисования, -12 нужно */
+>>>>>>> d783c8d71050eccbb9341022e18e4ede05370cac
     SCREEN_HEIGHT = SCREEN_WIDTH,
     ATOM_R = 0.2, /* радиус атома - колена ломаной */
     CYL_R = 0.1, /* радиус цилиндра - соединителя атомов */
@@ -135,6 +139,24 @@ function initScene() {
     container.addEventListener( 'touchmove', onDocumentTouchMove, false );
     container.addEventListener( 'touchend', onDocumentTouchEnd, false );
     container.addEventListener( 'wheel', onWheel, {passive:false});
+    document.onkeydown = function KeyCheck()  {
+        switch(event.keyCode) {
+        case 187:
+            zoomin(); break;
+        case 189: case 188:
+            zoomout(); break;
+        case 83:
+            down(); break;
+        case 65:
+            left(); break;
+        case 68:
+            right(); break;
+        case 87:
+            up(); break;
+        default:
+            //default
+        }
+    }
 }
 
 
