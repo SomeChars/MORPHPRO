@@ -136,13 +136,13 @@ function initScene() {
     document.addEventListener( 'wheel', onWheel, false);
     document.onkeydown = function KeyCheck()  {
         switch(event.keyCode) {
-            case 74: case 40:
+            case 83: case 40:
                 down(); break;
-            case 72: case 37:
+            case 65: case 37:
                 left(); break;
-            case 76: case 39:
+            case 68: case 39:
                 right(); break;
-            case 75: case 38:
+            case 87 : case 38:
                 up(); break;
             case 187: 
                 zoomin(); break;

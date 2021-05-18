@@ -141,6 +141,14 @@ function initScene() {
             zoomin(); break;
         case 189: case 188:
             zoomout(); break;
+        case 83:
+            down(); break;
+        case 65:
+            left(); break;
+        case 68:
+            right(); break;
+        case 87:
+            up(); break;
         default:
             //default
         }
