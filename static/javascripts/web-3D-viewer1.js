@@ -1,5 +1,5 @@
 /* Основные настройки */
-var 
+var
     SCREEN_WIDTH = document.body.children[0].children[1].getBoundingClientRect().width - 30, /* размеры области рисования, -30 нужно */
     SCREEN_HEIGHT = SCREEN_WIDTH,
     ATOM_R = 0.2, /* радиус атома - колена ломаной */
