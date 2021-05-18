@@ -227,6 +227,7 @@ def archive(request,page):
 def history(request,page):
     history_template = loader.get_template('morphserverapp/history.html')
     user_mr_table = MorphRequest.objects.filter(author=request.session.get('user_id'))[::-1][(page - 1) * 12:page * 12]
+
     mr_table = []
 
     for mr in user_mr_table:
@@ -246,7 +247,7 @@ def history(request,page):
             history_template.render({'morph_requests': mr_table, 'user_greeting': request.session.get('name'),
                                      'prev_page': None, 'next_page': './' + str(page + 1) + '?'}, request))
 
-    if MorphRequest.objects.filter(author=request.session.get('id')).earliest('pk') in user_mr_table:
+    if MorphRequest.objects.filter(author=request.session.get('user_id')).earliest('pk') in user_mr_table:
         return HttpResponse(
             history_template.render({'morph_requests': mr_table, 'user_greeting': request.session.get('name'),
                                      'prev_page': './' + str(page - 1) + '?', 'next_page': None}, request))
